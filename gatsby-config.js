@@ -1,9 +1,6 @@
 require('dotenv').config()
 
 module.exports = {
-  siteMetadata: {
-    title: `TODO: Remove me`,
-  },
   plugins: [
     'gatsby-transformer-remark',
     {
@@ -18,5 +15,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-ts',
+    'gatsby-plugin-emotion',
   ],
 }

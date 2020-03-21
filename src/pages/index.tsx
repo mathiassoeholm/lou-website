@@ -1,23 +1,48 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { css } from '@emotion/core'
 import { IndexPageQuery } from '../../graphql-types'
 import Layout from '../components/layout'
+import { ArticlePreview } from '../components/article-preview'
 
 interface IProps {
   data: IndexPageQuery
 }
 
-const Index: React.FC<IProps> = props => {
-  return <Layout>{props.data.site.siteMetadata.title}</Layout>
+const Index: React.FC<IProps> = ({ data }) => {
+  return (
+    <Layout>
+      <div
+        css={css`
+          display: grid;
+          grid-template-columns: repeat(auto-fill, 200px);
+          grid-gap: 10px;
+        `}
+      >
+        {data.allDatoCmsArticle.edges.map(({ node }) => (
+          <ArticlePreview key={node.id} article={node} />
+        ))}
+      </div>
+    </Layout>
+  )
 }
 
 export default Index
 
 export const query = graphql`
   query IndexPage {
-    site {
-      siteMetadata {
-        title
+    allDatoCmsArticle(sort: { fields: [position], order: ASC }) {
+      edges {
+        node {
+          id
+          title
+          slug
+          coverImage {
+            fluid(maxWidth: 200, imgixParams: { fm: "jpg", auto: "compress" }) {
+              ...GatsbyDatoCmsFluid
+            }
+          }
+        }
       }
     }
   }

@@ -68,6 +68,7 @@ export type DatoCmsArticle = Node & {
   contentNode?: Maybe<DatoCmsTextNode>;
   _allContentLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsArticleContent>>>;
   seo?: Maybe<DatoCmsSeoField>;
+  position?: Maybe<Scalars['Int']>;
   meta?: Maybe<DatoCmsMetaField>;
   originalId?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
@@ -351,6 +352,7 @@ export type DatoCmsArticleFieldsEnum =
   'seo___image___internal___mediaType' |
   'seo___image___internal___owner' |
   'seo___image___internal___type' |
+  'position' |
   'meta___createdAt' |
   'meta___updatedAt' |
   'meta___publishedAt' |
@@ -558,6 +560,7 @@ export type DatoCmsArticleFilterInput = {
   contentNode?: Maybe<DatoCmsTextNodeFilterInput>;
   _allContentLocales?: Maybe<DatoCmsAllLocalesForDatoCmsArticleContentFilterListInput>;
   seo?: Maybe<DatoCmsSeoFieldFilterInput>;
+  position?: Maybe<IntQueryOperatorInput>;
   meta?: Maybe<DatoCmsMetaFieldFilterInput>;
   originalId?: Maybe<StringQueryOperatorInput>;
   locale?: Maybe<StringQueryOperatorInput>;
@@ -3628,7 +3631,6 @@ export type QueryAllSitePageArgs = {
 
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
-  siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
@@ -3716,6 +3718,7 @@ export type QueryDatoCmsArticleArgs = {
   contentNode?: Maybe<DatoCmsTextNodeFilterInput>;
   _allContentLocales?: Maybe<DatoCmsAllLocalesForDatoCmsArticleContentFilterListInput>;
   seo?: Maybe<DatoCmsSeoFieldFilterInput>;
+  position?: Maybe<IntQueryOperatorInput>;
   meta?: Maybe<DatoCmsMetaFieldFilterInput>;
   originalId?: Maybe<StringQueryOperatorInput>;
   locale?: Maybe<StringQueryOperatorInput>;
@@ -3914,7 +3917,6 @@ export type QueryAllSitePluginArgs = {
 
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
-  siteMetadata?: Maybe<SiteSiteMetadata>;
   port?: Maybe<Scalars['Int']>;
   host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
@@ -4116,7 +4118,6 @@ export type SiteEdge = {
 
 export type SiteFieldsEnum = 
   'buildTime' |
-  'siteMetadata___title' |
   'port' |
   'host' |
   'polyfill' |
@@ -4210,7 +4211,6 @@ export type SiteFieldsEnum =
 
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
-  siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
@@ -4753,14 +4753,6 @@ export type SitePluginSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
-export type SiteSiteMetadata = {
-  title?: Maybe<Scalars['String']>;
-};
-
-export type SiteSiteMetadataFilterInput = {
-  title?: Maybe<StringQueryOperatorInput>;
-};
-
 export type SiteSortInput = {
   fields?: Maybe<Array<Maybe<SiteFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
@@ -4787,7 +4779,10 @@ export type LayoutQuery = { datoCmsSite?: Maybe<{ globalSeo?: Maybe<Pick<DatoCms
 export type IndexPageQueryVariables = {};
 
 
-export type IndexPageQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+export type IndexPageQuery = { allDatoCmsArticle: { edges: Array<{ node: (
+        Pick<DatoCmsArticle, 'id' | 'title' | 'slug'>
+        & { coverImage?: Maybe<{ fluid?: Maybe<GatsbyDatoCmsFluidFragment> }> }
+      ) }> } };
 
 export type ArticleQueryVariables = {
   slug: Scalars['String'];

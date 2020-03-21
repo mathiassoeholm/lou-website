@@ -4,6 +4,7 @@ import { ArticleQuery } from '../../graphql-types'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Layout from '../components/layout'
 import Img from 'gatsby-image'
+import { css } from '@emotion/core'
 
 interface IProps {
   data: ArticleQuery
@@ -12,9 +13,16 @@ interface IProps {
 const Article: React.FC<IProps> = ({ data }) => {
   return (
     <Layout>
-      <article>
+      <article
+        css={css`
+          max-width: 800px;
+          margin: auto;
+        `}
+      >
         <HelmetDatoCms seo={data.datoCmsArticle.seoMetaTags} />
-        <Img fluid={data.datoCmsArticle.coverImage.fluid} />
+        {data.datoCmsArticle.coverImage && (
+          <Img fluid={data.datoCmsArticle.coverImage.fluid} />
+        )}
         <div
           dangerouslySetInnerHTML={{
             __html: data.datoCmsArticle.contentNode.childMarkdownRemark.html,
