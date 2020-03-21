@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { ArticleQuery } from '../../graphql-types'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Layout from '../components/layout'
+import Img from 'gatsby-image'
 
 interface IProps {
   data: ArticleQuery
@@ -13,6 +14,7 @@ const Article: React.FC<IProps> = ({ data }) => {
     <Layout>
       <article>
         <HelmetDatoCms seo={data.datoCmsArticle.seoMetaTags} />
+        <Img fluid={data.datoCmsArticle.coverImage.fluid} />
         <div
           dangerouslySetInnerHTML={{
             __html: data.datoCmsArticle.contentNode.childMarkdownRemark.html,
@@ -35,6 +37,11 @@ export const query = graphql`
       contentNode {
         childMarkdownRemark {
           html
+        }
+      }
+      coverImage {
+        fluid(maxWidth: 1200, imgixParams: { fm: "jpg", auto: "compress" }) {
+          ...GatsbyDatoCmsFluid
         }
       }
     }

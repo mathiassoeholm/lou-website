@@ -63,7 +63,7 @@ export type DatoCmsAllLocalesForDatoCmsArticleContentFilterListInput = {
 export type DatoCmsArticle = Node & {
   title?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
-  image?: Maybe<DatoCmsFileField>;
+  coverImage?: Maybe<DatoCmsFileField>;
   content?: Maybe<Scalars['String']>;
   contentNode?: Maybe<DatoCmsTextNode>;
   _allContentLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsArticleContent>>>;
@@ -109,73 +109,73 @@ export type DatoCmsArticleEdge = {
 export type DatoCmsArticleFieldsEnum = 
   'title' |
   'slug' |
-  'image___size' |
-  'image___width' |
-  'image___height' |
-  'image___path' |
-  'image___format' |
-  'image___isImage' |
-  'image___createdAt' |
-  'image___url' |
-  'image___notes' |
-  'image___author' |
-  'image___copyright' |
-  'image___originalId' |
-  'image___tags' |
-  'image___smartTags' |
-  'image___filename' |
-  'image___basename' |
-  'image___exifInfo' |
-  'image___mimeType' |
-  'image___colors' |
-  'image___colors___red' |
-  'image___colors___green' |
-  'image___colors___blue' |
-  'image___colors___alpha' |
-  'image___colors___rgb' |
-  'image___colors___hex' |
-  'image___blurhash' |
-  'image___video___muxPlaybackId' |
-  'image___video___frameRate' |
-  'image___video___duration' |
-  'image___video___streamingUrl' |
-  'image___video___thumbnailUrl' |
-  'image___video___mp4Url' |
-  'image___fluid___base64' |
-  'image___fluid___tracedSVG' |
-  'image___fluid___aspectRatio' |
-  'image___fluid___width' |
-  'image___fluid___height' |
-  'image___fluid___src' |
-  'image___fluid___srcSet' |
-  'image___fluid___sizes' |
-  'image___sizes___base64' |
-  'image___sizes___tracedSVG' |
-  'image___sizes___aspectRatio' |
-  'image___sizes___width' |
-  'image___sizes___height' |
-  'image___sizes___src' |
-  'image___sizes___srcSet' |
-  'image___sizes___sizes' |
-  'image___fixed___base64' |
-  'image___fixed___tracedSVG' |
-  'image___fixed___aspectRatio' |
-  'image___fixed___width' |
-  'image___fixed___height' |
-  'image___fixed___src' |
-  'image___fixed___srcSet' |
-  'image___fixed___sizes' |
-  'image___resolutions___base64' |
-  'image___resolutions___tracedSVG' |
-  'image___resolutions___aspectRatio' |
-  'image___resolutions___width' |
-  'image___resolutions___height' |
-  'image___resolutions___src' |
-  'image___resolutions___srcSet' |
-  'image___resolutions___sizes' |
-  'image___alt' |
-  'image___title' |
-  'image___customData' |
+  'coverImage___size' |
+  'coverImage___width' |
+  'coverImage___height' |
+  'coverImage___path' |
+  'coverImage___format' |
+  'coverImage___isImage' |
+  'coverImage___createdAt' |
+  'coverImage___url' |
+  'coverImage___notes' |
+  'coverImage___author' |
+  'coverImage___copyright' |
+  'coverImage___originalId' |
+  'coverImage___tags' |
+  'coverImage___smartTags' |
+  'coverImage___filename' |
+  'coverImage___basename' |
+  'coverImage___exifInfo' |
+  'coverImage___mimeType' |
+  'coverImage___colors' |
+  'coverImage___colors___red' |
+  'coverImage___colors___green' |
+  'coverImage___colors___blue' |
+  'coverImage___colors___alpha' |
+  'coverImage___colors___rgb' |
+  'coverImage___colors___hex' |
+  'coverImage___blurhash' |
+  'coverImage___video___muxPlaybackId' |
+  'coverImage___video___frameRate' |
+  'coverImage___video___duration' |
+  'coverImage___video___streamingUrl' |
+  'coverImage___video___thumbnailUrl' |
+  'coverImage___video___mp4Url' |
+  'coverImage___fluid___base64' |
+  'coverImage___fluid___tracedSVG' |
+  'coverImage___fluid___aspectRatio' |
+  'coverImage___fluid___width' |
+  'coverImage___fluid___height' |
+  'coverImage___fluid___src' |
+  'coverImage___fluid___srcSet' |
+  'coverImage___fluid___sizes' |
+  'coverImage___sizes___base64' |
+  'coverImage___sizes___tracedSVG' |
+  'coverImage___sizes___aspectRatio' |
+  'coverImage___sizes___width' |
+  'coverImage___sizes___height' |
+  'coverImage___sizes___src' |
+  'coverImage___sizes___srcSet' |
+  'coverImage___sizes___sizes' |
+  'coverImage___fixed___base64' |
+  'coverImage___fixed___tracedSVG' |
+  'coverImage___fixed___aspectRatio' |
+  'coverImage___fixed___width' |
+  'coverImage___fixed___height' |
+  'coverImage___fixed___src' |
+  'coverImage___fixed___srcSet' |
+  'coverImage___fixed___sizes' |
+  'coverImage___resolutions___base64' |
+  'coverImage___resolutions___tracedSVG' |
+  'coverImage___resolutions___aspectRatio' |
+  'coverImage___resolutions___width' |
+  'coverImage___resolutions___height' |
+  'coverImage___resolutions___src' |
+  'coverImage___resolutions___srcSet' |
+  'coverImage___resolutions___sizes' |
+  'coverImage___alt' |
+  'coverImage___title' |
+  'coverImage___customData' |
   'content' |
   'contentNode___id' |
   'contentNode___parent___id' |
@@ -553,7 +553,7 @@ export type DatoCmsArticleFieldsEnum =
 export type DatoCmsArticleFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
-  image?: Maybe<DatoCmsFileFieldFilterInput>;
+  coverImage?: Maybe<DatoCmsFileFieldFilterInput>;
   content?: Maybe<StringQueryOperatorInput>;
   contentNode?: Maybe<DatoCmsTextNodeFilterInput>;
   _allContentLocales?: Maybe<DatoCmsAllLocalesForDatoCmsArticleContentFilterListInput>;
@@ -3711,7 +3711,7 @@ export type QueryAllDatoCmsTextNodeArgs = {
 export type QueryDatoCmsArticleArgs = {
   title?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
-  image?: Maybe<DatoCmsFileFieldFilterInput>;
+  coverImage?: Maybe<DatoCmsFileFieldFilterInput>;
   content?: Maybe<StringQueryOperatorInput>;
   contentNode?: Maybe<DatoCmsTextNodeFilterInput>;
   _allContentLocales?: Maybe<DatoCmsAllLocalesForDatoCmsArticleContentFilterListInput>;
@@ -4419,6 +4419,7 @@ export type SitePageFieldsEnum =
   'pluginCreator___version' |
   'pluginCreator___pluginOptions___apiToken' |
   'pluginCreator___pluginOptions___previewMode' |
+  'pluginCreator___pluginOptions___disableLiveReload' |
   'pluginCreator___pluginOptions___localeFallbacks___da' |
   'pluginCreator___pluginOptions___path' |
   'pluginCreator___pluginOptions___pathCheck' |
@@ -4607,6 +4608,7 @@ export type SitePluginFieldsEnum =
   'version' |
   'pluginOptions___apiToken' |
   'pluginOptions___previewMode' |
+  'pluginOptions___disableLiveReload' |
   'pluginOptions___localeFallbacks___da' |
   'pluginOptions___path' |
   'pluginOptions___pathCheck' |
@@ -4723,6 +4725,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPluginOptions = {
   apiToken?: Maybe<Scalars['String']>;
   previewMode?: Maybe<Scalars['Boolean']>;
+  disableLiveReload?: Maybe<Scalars['Boolean']>;
   localeFallbacks?: Maybe<SitePluginPluginOptionsLocaleFallbacks>;
   path?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
@@ -4731,6 +4734,7 @@ export type SitePluginPluginOptions = {
 export type SitePluginPluginOptionsFilterInput = {
   apiToken?: Maybe<StringQueryOperatorInput>;
   previewMode?: Maybe<BooleanQueryOperatorInput>;
+  disableLiveReload?: Maybe<BooleanQueryOperatorInput>;
   localeFallbacks?: Maybe<SitePluginPluginOptionsLocaleFallbacksFilterInput>;
   path?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
@@ -4792,7 +4796,7 @@ export type ArticleQueryVariables = {
 
 export type ArticleQuery = { datoCmsArticle?: Maybe<(
     Pick<DatoCmsArticle, 'title'>
-    & { seoMetaTags?: Maybe<GatsbyDatoCmsSeoMetaTagsFragment>, contentNode?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }
+    & { seoMetaTags?: Maybe<GatsbyDatoCmsSeoMetaTagsFragment>, contentNode?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }>, coverImage?: Maybe<{ fluid?: Maybe<GatsbyDatoCmsFluidFragment> }> }
   )> };
 
 export type GatsbyDatoCmsResolutionsFragment = Pick<DatoCmsFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;

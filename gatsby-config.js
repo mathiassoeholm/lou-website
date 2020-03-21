@@ -11,6 +11,7 @@ module.exports = {
       options: {
         apiToken: process.env.DATO_API_TOKEN,
         previewMode: process.env.NODE_ENV === 'development',
+        disableLiveReload: true,
         localeFallbacks: {
           da: ['en'],
         },
