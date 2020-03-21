@@ -2,9 +2,10 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `Louise Juhl Andersen`,
+    title: `TODO: Remove me`,
   },
   plugins: [
+    'gatsby-transformer-remark',
     {
       resolve: `gatsby-source-datocms`,
       options: {

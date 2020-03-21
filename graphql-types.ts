@@ -67,6 +67,7 @@ export type DatoCmsArticle = Node & {
   content?: Maybe<Scalars['String']>;
   contentNode?: Maybe<DatoCmsTextNode>;
   _allContentLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsArticleContent>>>;
+  seo?: Maybe<DatoCmsSeoField>;
   meta?: Maybe<DatoCmsMetaField>;
   originalId?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
@@ -214,6 +215,34 @@ export type DatoCmsArticleFieldsEnum =
   'contentNode___internal___mediaType' |
   'contentNode___internal___owner' |
   'contentNode___internal___type' |
+  'contentNode___childMarkdownRemark___id' |
+  'contentNode___childMarkdownRemark___frontmatter___title' |
+  'contentNode___childMarkdownRemark___excerpt' |
+  'contentNode___childMarkdownRemark___rawMarkdownBody' |
+  'contentNode___childMarkdownRemark___html' |
+  'contentNode___childMarkdownRemark___htmlAst' |
+  'contentNode___childMarkdownRemark___excerptAst' |
+  'contentNode___childMarkdownRemark___headings' |
+  'contentNode___childMarkdownRemark___headings___value' |
+  'contentNode___childMarkdownRemark___headings___depth' |
+  'contentNode___childMarkdownRemark___timeToRead' |
+  'contentNode___childMarkdownRemark___tableOfContents' |
+  'contentNode___childMarkdownRemark___wordCount___paragraphs' |
+  'contentNode___childMarkdownRemark___wordCount___sentences' |
+  'contentNode___childMarkdownRemark___wordCount___words' |
+  'contentNode___childMarkdownRemark___parent___id' |
+  'contentNode___childMarkdownRemark___parent___children' |
+  'contentNode___childMarkdownRemark___children' |
+  'contentNode___childMarkdownRemark___children___id' |
+  'contentNode___childMarkdownRemark___children___children' |
+  'contentNode___childMarkdownRemark___internal___content' |
+  'contentNode___childMarkdownRemark___internal___contentDigest' |
+  'contentNode___childMarkdownRemark___internal___description' |
+  'contentNode___childMarkdownRemark___internal___fieldOwners' |
+  'contentNode___childMarkdownRemark___internal___ignoreType' |
+  'contentNode___childMarkdownRemark___internal___mediaType' |
+  'contentNode___childMarkdownRemark___internal___owner' |
+  'contentNode___childMarkdownRemark___internal___type' |
   '_allContentLocales' |
   '_allContentLocales___locale' |
   '_allContentLocales___value' |
@@ -231,6 +260,97 @@ export type DatoCmsArticleFieldsEnum =
   '_allContentLocales___valueNode___internal___mediaType' |
   '_allContentLocales___valueNode___internal___owner' |
   '_allContentLocales___valueNode___internal___type' |
+  '_allContentLocales___valueNode___childMarkdownRemark___id' |
+  '_allContentLocales___valueNode___childMarkdownRemark___excerpt' |
+  '_allContentLocales___valueNode___childMarkdownRemark___rawMarkdownBody' |
+  '_allContentLocales___valueNode___childMarkdownRemark___html' |
+  '_allContentLocales___valueNode___childMarkdownRemark___htmlAst' |
+  '_allContentLocales___valueNode___childMarkdownRemark___excerptAst' |
+  '_allContentLocales___valueNode___childMarkdownRemark___headings' |
+  '_allContentLocales___valueNode___childMarkdownRemark___timeToRead' |
+  '_allContentLocales___valueNode___childMarkdownRemark___tableOfContents' |
+  '_allContentLocales___valueNode___childMarkdownRemark___children' |
+  'seo___title' |
+  'seo___description' |
+  'seo___twitterCard' |
+  'seo___image___size' |
+  'seo___image___width' |
+  'seo___image___height' |
+  'seo___image___path' |
+  'seo___image___format' |
+  'seo___image___isImage' |
+  'seo___image___createdAt' |
+  'seo___image___url' |
+  'seo___image___notes' |
+  'seo___image___author' |
+  'seo___image___copyright' |
+  'seo___image___originalId' |
+  'seo___image___tags' |
+  'seo___image___smartTags' |
+  'seo___image___filename' |
+  'seo___image___basename' |
+  'seo___image___exifInfo' |
+  'seo___image___mimeType' |
+  'seo___image___colors' |
+  'seo___image___colors___red' |
+  'seo___image___colors___green' |
+  'seo___image___colors___blue' |
+  'seo___image___colors___alpha' |
+  'seo___image___colors___rgb' |
+  'seo___image___colors___hex' |
+  'seo___image___blurhash' |
+  'seo___image___video___muxPlaybackId' |
+  'seo___image___video___frameRate' |
+  'seo___image___video___duration' |
+  'seo___image___video___streamingUrl' |
+  'seo___image___video___thumbnailUrl' |
+  'seo___image___video___mp4Url' |
+  'seo___image___fluid___base64' |
+  'seo___image___fluid___tracedSVG' |
+  'seo___image___fluid___aspectRatio' |
+  'seo___image___fluid___width' |
+  'seo___image___fluid___height' |
+  'seo___image___fluid___src' |
+  'seo___image___fluid___srcSet' |
+  'seo___image___fluid___sizes' |
+  'seo___image___sizes___base64' |
+  'seo___image___sizes___tracedSVG' |
+  'seo___image___sizes___aspectRatio' |
+  'seo___image___sizes___width' |
+  'seo___image___sizes___height' |
+  'seo___image___sizes___src' |
+  'seo___image___sizes___srcSet' |
+  'seo___image___sizes___sizes' |
+  'seo___image___fixed___base64' |
+  'seo___image___fixed___tracedSVG' |
+  'seo___image___fixed___aspectRatio' |
+  'seo___image___fixed___width' |
+  'seo___image___fixed___height' |
+  'seo___image___fixed___src' |
+  'seo___image___fixed___srcSet' |
+  'seo___image___fixed___sizes' |
+  'seo___image___resolutions___base64' |
+  'seo___image___resolutions___tracedSVG' |
+  'seo___image___resolutions___aspectRatio' |
+  'seo___image___resolutions___width' |
+  'seo___image___resolutions___height' |
+  'seo___image___resolutions___src' |
+  'seo___image___resolutions___srcSet' |
+  'seo___image___resolutions___sizes' |
+  'seo___image___id' |
+  'seo___image___parent___id' |
+  'seo___image___parent___children' |
+  'seo___image___children' |
+  'seo___image___children___id' |
+  'seo___image___children___children' |
+  'seo___image___internal___content' |
+  'seo___image___internal___contentDigest' |
+  'seo___image___internal___description' |
+  'seo___image___internal___fieldOwners' |
+  'seo___image___internal___ignoreType' |
+  'seo___image___internal___mediaType' |
+  'seo___image___internal___owner' |
+  'seo___image___internal___type' |
   'meta___createdAt' |
   'meta___updatedAt' |
   'meta___publishedAt' |
@@ -437,6 +557,7 @@ export type DatoCmsArticleFilterInput = {
   content?: Maybe<StringQueryOperatorInput>;
   contentNode?: Maybe<DatoCmsTextNodeFilterInput>;
   _allContentLocales?: Maybe<DatoCmsAllLocalesForDatoCmsArticleContentFilterListInput>;
+  seo?: Maybe<DatoCmsSeoFieldFilterInput>;
   meta?: Maybe<DatoCmsMetaFieldFilterInput>;
   originalId?: Maybe<StringQueryOperatorInput>;
   locale?: Maybe<StringQueryOperatorInput>;
@@ -2229,6 +2350,7 @@ export type DatoCmsTextNode = Node & {
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
+  childMarkdownRemark?: Maybe<MarkdownRemark>;
 };
 
 export type DatoCmsTextNodeConnection = {
@@ -2344,13 +2466,66 @@ export type DatoCmsTextNodeFieldsEnum =
   'internal___ignoreType' |
   'internal___mediaType' |
   'internal___owner' |
-  'internal___type';
+  'internal___type' |
+  'childMarkdownRemark___id' |
+  'childMarkdownRemark___frontmatter___title' |
+  'childMarkdownRemark___excerpt' |
+  'childMarkdownRemark___rawMarkdownBody' |
+  'childMarkdownRemark___html' |
+  'childMarkdownRemark___htmlAst' |
+  'childMarkdownRemark___excerptAst' |
+  'childMarkdownRemark___headings' |
+  'childMarkdownRemark___headings___value' |
+  'childMarkdownRemark___headings___depth' |
+  'childMarkdownRemark___timeToRead' |
+  'childMarkdownRemark___tableOfContents' |
+  'childMarkdownRemark___wordCount___paragraphs' |
+  'childMarkdownRemark___wordCount___sentences' |
+  'childMarkdownRemark___wordCount___words' |
+  'childMarkdownRemark___parent___id' |
+  'childMarkdownRemark___parent___parent___id' |
+  'childMarkdownRemark___parent___parent___children' |
+  'childMarkdownRemark___parent___children' |
+  'childMarkdownRemark___parent___children___id' |
+  'childMarkdownRemark___parent___children___children' |
+  'childMarkdownRemark___parent___internal___content' |
+  'childMarkdownRemark___parent___internal___contentDigest' |
+  'childMarkdownRemark___parent___internal___description' |
+  'childMarkdownRemark___parent___internal___fieldOwners' |
+  'childMarkdownRemark___parent___internal___ignoreType' |
+  'childMarkdownRemark___parent___internal___mediaType' |
+  'childMarkdownRemark___parent___internal___owner' |
+  'childMarkdownRemark___parent___internal___type' |
+  'childMarkdownRemark___children' |
+  'childMarkdownRemark___children___id' |
+  'childMarkdownRemark___children___parent___id' |
+  'childMarkdownRemark___children___parent___children' |
+  'childMarkdownRemark___children___children' |
+  'childMarkdownRemark___children___children___id' |
+  'childMarkdownRemark___children___children___children' |
+  'childMarkdownRemark___children___internal___content' |
+  'childMarkdownRemark___children___internal___contentDigest' |
+  'childMarkdownRemark___children___internal___description' |
+  'childMarkdownRemark___children___internal___fieldOwners' |
+  'childMarkdownRemark___children___internal___ignoreType' |
+  'childMarkdownRemark___children___internal___mediaType' |
+  'childMarkdownRemark___children___internal___owner' |
+  'childMarkdownRemark___children___internal___type' |
+  'childMarkdownRemark___internal___content' |
+  'childMarkdownRemark___internal___contentDigest' |
+  'childMarkdownRemark___internal___description' |
+  'childMarkdownRemark___internal___fieldOwners' |
+  'childMarkdownRemark___internal___ignoreType' |
+  'childMarkdownRemark___internal___mediaType' |
+  'childMarkdownRemark___internal___owner' |
+  'childMarkdownRemark___internal___type';
 
 export type DatoCmsTextNodeFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
 };
 
 export type DatoCmsTextNodeGroupConnection = {
@@ -3019,6 +3194,256 @@ export type JsonQueryOperatorInput = {
   glob?: Maybe<Scalars['JSON']>;
 };
 
+export type MarkdownExcerptFormats = 
+  'PLAIN' |
+  'HTML' |
+  'MARKDOWN';
+
+export type MarkdownHeading = {
+  value?: Maybe<Scalars['String']>;
+  depth?: Maybe<Scalars['Int']>;
+};
+
+export type MarkdownHeadingFilterInput = {
+  value?: Maybe<StringQueryOperatorInput>;
+  depth?: Maybe<IntQueryOperatorInput>;
+};
+
+export type MarkdownHeadingFilterListInput = {
+  elemMatch?: Maybe<MarkdownHeadingFilterInput>;
+};
+
+export type MarkdownHeadingLevels = 
+  'h1' |
+  'h2' |
+  'h3' |
+  'h4' |
+  'h5' |
+  'h6';
+
+export type MarkdownRemark = Node & {
+  id: Scalars['ID'];
+  frontmatter?: Maybe<MarkdownRemarkFrontmatter>;
+  excerpt?: Maybe<Scalars['String']>;
+  rawMarkdownBody?: Maybe<Scalars['String']>;
+  html?: Maybe<Scalars['String']>;
+  htmlAst?: Maybe<Scalars['JSON']>;
+  excerptAst?: Maybe<Scalars['JSON']>;
+  headings?: Maybe<Array<Maybe<MarkdownHeading>>>;
+  timeToRead?: Maybe<Scalars['Int']>;
+  tableOfContents?: Maybe<Scalars['String']>;
+  wordCount?: Maybe<MarkdownWordCount>;
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+
+export type MarkdownRemarkExcerptArgs = {
+  pruneLength?: Maybe<Scalars['Int']>;
+  truncate?: Maybe<Scalars['Boolean']>;
+  format?: Maybe<MarkdownExcerptFormats>;
+};
+
+
+export type MarkdownRemarkExcerptAstArgs = {
+  pruneLength?: Maybe<Scalars['Int']>;
+  truncate?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type MarkdownRemarkHeadingsArgs = {
+  depth?: Maybe<MarkdownHeadingLevels>;
+};
+
+
+export type MarkdownRemarkTableOfContentsArgs = {
+  absolute?: Maybe<Scalars['Boolean']>;
+  pathToSlugField?: Maybe<Scalars['String']>;
+  maxDepth?: Maybe<Scalars['Int']>;
+  heading?: Maybe<Scalars['String']>;
+};
+
+export type MarkdownRemarkConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<MarkdownRemarkEdge>;
+  nodes: Array<MarkdownRemark>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<MarkdownRemarkGroupConnection>;
+};
+
+
+export type MarkdownRemarkConnectionDistinctArgs = {
+  field: MarkdownRemarkFieldsEnum;
+};
+
+
+export type MarkdownRemarkConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: MarkdownRemarkFieldsEnum;
+};
+
+export type MarkdownRemarkEdge = {
+  next?: Maybe<MarkdownRemark>;
+  node: MarkdownRemark;
+  previous?: Maybe<MarkdownRemark>;
+};
+
+export type MarkdownRemarkFieldsEnum = 
+  'id' |
+  'frontmatter___title' |
+  'excerpt' |
+  'rawMarkdownBody' |
+  'html' |
+  'htmlAst' |
+  'excerptAst' |
+  'headings' |
+  'headings___value' |
+  'headings___depth' |
+  'timeToRead' |
+  'tableOfContents' |
+  'wordCount___paragraphs' |
+  'wordCount___sentences' |
+  'wordCount___words' |
+  'parent___id' |
+  'parent___parent___id' |
+  'parent___parent___parent___id' |
+  'parent___parent___parent___children' |
+  'parent___parent___children' |
+  'parent___parent___children___id' |
+  'parent___parent___children___children' |
+  'parent___parent___internal___content' |
+  'parent___parent___internal___contentDigest' |
+  'parent___parent___internal___description' |
+  'parent___parent___internal___fieldOwners' |
+  'parent___parent___internal___ignoreType' |
+  'parent___parent___internal___mediaType' |
+  'parent___parent___internal___owner' |
+  'parent___parent___internal___type' |
+  'parent___children' |
+  'parent___children___id' |
+  'parent___children___parent___id' |
+  'parent___children___parent___children' |
+  'parent___children___children' |
+  'parent___children___children___id' |
+  'parent___children___children___children' |
+  'parent___children___internal___content' |
+  'parent___children___internal___contentDigest' |
+  'parent___children___internal___description' |
+  'parent___children___internal___fieldOwners' |
+  'parent___children___internal___ignoreType' |
+  'parent___children___internal___mediaType' |
+  'parent___children___internal___owner' |
+  'parent___children___internal___type' |
+  'parent___internal___content' |
+  'parent___internal___contentDigest' |
+  'parent___internal___description' |
+  'parent___internal___fieldOwners' |
+  'parent___internal___ignoreType' |
+  'parent___internal___mediaType' |
+  'parent___internal___owner' |
+  'parent___internal___type' |
+  'children' |
+  'children___id' |
+  'children___parent___id' |
+  'children___parent___parent___id' |
+  'children___parent___parent___children' |
+  'children___parent___children' |
+  'children___parent___children___id' |
+  'children___parent___children___children' |
+  'children___parent___internal___content' |
+  'children___parent___internal___contentDigest' |
+  'children___parent___internal___description' |
+  'children___parent___internal___fieldOwners' |
+  'children___parent___internal___ignoreType' |
+  'children___parent___internal___mediaType' |
+  'children___parent___internal___owner' |
+  'children___parent___internal___type' |
+  'children___children' |
+  'children___children___id' |
+  'children___children___parent___id' |
+  'children___children___parent___children' |
+  'children___children___children' |
+  'children___children___children___id' |
+  'children___children___children___children' |
+  'children___children___internal___content' |
+  'children___children___internal___contentDigest' |
+  'children___children___internal___description' |
+  'children___children___internal___fieldOwners' |
+  'children___children___internal___ignoreType' |
+  'children___children___internal___mediaType' |
+  'children___children___internal___owner' |
+  'children___children___internal___type' |
+  'children___internal___content' |
+  'children___internal___contentDigest' |
+  'children___internal___description' |
+  'children___internal___fieldOwners' |
+  'children___internal___ignoreType' |
+  'children___internal___mediaType' |
+  'children___internal___owner' |
+  'children___internal___type' |
+  'internal___content' |
+  'internal___contentDigest' |
+  'internal___description' |
+  'internal___fieldOwners' |
+  'internal___ignoreType' |
+  'internal___mediaType' |
+  'internal___owner' |
+  'internal___type';
+
+export type MarkdownRemarkFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  frontmatter?: Maybe<MarkdownRemarkFrontmatterFilterInput>;
+  excerpt?: Maybe<StringQueryOperatorInput>;
+  rawMarkdownBody?: Maybe<StringQueryOperatorInput>;
+  html?: Maybe<StringQueryOperatorInput>;
+  htmlAst?: Maybe<JsonQueryOperatorInput>;
+  excerptAst?: Maybe<JsonQueryOperatorInput>;
+  headings?: Maybe<MarkdownHeadingFilterListInput>;
+  timeToRead?: Maybe<IntQueryOperatorInput>;
+  tableOfContents?: Maybe<StringQueryOperatorInput>;
+  wordCount?: Maybe<MarkdownWordCountFilterInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+export type MarkdownRemarkFrontmatter = {
+  title?: Maybe<Scalars['String']>;
+};
+
+export type MarkdownRemarkFrontmatterFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>;
+};
+
+export type MarkdownRemarkGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<MarkdownRemarkEdge>;
+  nodes: Array<MarkdownRemark>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type MarkdownRemarkSortInput = {
+  fields?: Maybe<Array<Maybe<MarkdownRemarkFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export type MarkdownWordCount = {
+  paragraphs?: Maybe<Scalars['Int']>;
+  sentences?: Maybe<Scalars['Int']>;
+  words?: Maybe<Scalars['Int']>;
+};
+
+export type MarkdownWordCountFilterInput = {
+  paragraphs?: Maybe<IntQueryOperatorInput>;
+  sentences?: Maybe<IntQueryOperatorInput>;
+  words?: Maybe<IntQueryOperatorInput>;
+};
+
 /** Node Interface */
 export type Node = {
   id: Scalars['ID'];
@@ -3056,6 +3481,8 @@ export type Query = {
   allSitePage: SitePageConnection;
   site?: Maybe<Site>;
   allSite: SiteConnection;
+  markdownRemark?: Maybe<MarkdownRemark>;
+  allMarkdownRemark: MarkdownRemarkConnection;
   datoCmsSeoMetaTags?: Maybe<DatoCmsSeoMetaTags>;
   allDatoCmsSeoMetaTags: DatoCmsSeoMetaTagsConnection;
   datoCmsTextNode?: Maybe<DatoCmsTextNode>;
@@ -3221,6 +3648,32 @@ export type QueryAllSiteArgs = {
 };
 
 
+export type QueryMarkdownRemarkArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  frontmatter?: Maybe<MarkdownRemarkFrontmatterFilterInput>;
+  excerpt?: Maybe<StringQueryOperatorInput>;
+  rawMarkdownBody?: Maybe<StringQueryOperatorInput>;
+  html?: Maybe<StringQueryOperatorInput>;
+  htmlAst?: Maybe<JsonQueryOperatorInput>;
+  excerptAst?: Maybe<JsonQueryOperatorInput>;
+  headings?: Maybe<MarkdownHeadingFilterListInput>;
+  timeToRead?: Maybe<IntQueryOperatorInput>;
+  tableOfContents?: Maybe<StringQueryOperatorInput>;
+  wordCount?: Maybe<MarkdownWordCountFilterInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+
+export type QueryAllMarkdownRemarkArgs = {
+  filter?: Maybe<MarkdownRemarkFilterInput>;
+  sort?: Maybe<MarkdownRemarkSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryDatoCmsSeoMetaTagsArgs = {
   tags?: Maybe<JsonQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -3243,6 +3696,7 @@ export type QueryDatoCmsTextNodeArgs = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
 };
 
 
@@ -3261,6 +3715,7 @@ export type QueryDatoCmsArticleArgs = {
   content?: Maybe<StringQueryOperatorInput>;
   contentNode?: Maybe<DatoCmsTextNodeFilterInput>;
   _allContentLocales?: Maybe<DatoCmsAllLocalesForDatoCmsArticleContentFilterListInput>;
+  seo?: Maybe<DatoCmsSeoFieldFilterInput>;
   meta?: Maybe<DatoCmsMetaFieldFilterInput>;
   originalId?: Maybe<StringQueryOperatorInput>;
   locale?: Maybe<StringQueryOperatorInput>;
@@ -4320,10 +4775,25 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
+export type LayoutQueryVariables = {};
+
+
+export type LayoutQuery = { datoCmsSite?: Maybe<{ globalSeo?: Maybe<Pick<DatoCmsGlobalSeo, 'siteName'>>, faviconMetaTags?: Maybe<GatsbyDatoCmsFaviconMetaTagsFragment> }> };
+
 export type IndexPageQueryVariables = {};
 
 
 export type IndexPageQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+
+export type ArticleQueryVariables = {
+  slug: Scalars['String'];
+};
+
+
+export type ArticleQuery = { datoCmsArticle?: Maybe<(
+    Pick<DatoCmsArticle, 'title'>
+    & { seoMetaTags?: Maybe<GatsbyDatoCmsSeoMetaTagsFragment>, contentNode?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }
+  )> };
 
 export type GatsbyDatoCmsResolutionsFragment = Pick<DatoCmsFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
