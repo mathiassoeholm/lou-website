@@ -1,7 +1,23 @@
-import React from "react";
+import React from 'react'
+import { graphql } from 'gatsby'
+import { IndexPageQuery } from '../../graphql-types'
 
-const Index: React.FC = () => {
-  return <div>hello there</div>;
-};
+interface IProps {
+  data: IndexPageQuery
+}
 
-export default Index;
+const Index: React.FC<IProps> = props => {
+  return <div>{props.data.site?.siteMetadata?.title}</div>
+}
+
+export default Index
+
+export const query = graphql`
+  query IndexPage {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
