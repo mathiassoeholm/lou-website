@@ -6,6 +6,7 @@ import 'normalize.css'
 import { LayoutQuery } from '../../graphql-types'
 import { GlobalStyle } from './global-style'
 import { css } from '@emotion/core'
+import { Header } from './header'
 
 const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery<LayoutQuery>(graphql`
@@ -13,6 +14,9 @@ const Layout: React.FC = ({ children }) => {
       datoCmsSite {
         globalSeo {
           siteName
+          fallbackSeo {
+            title
+          }
         }
         faviconMetaTags {
           ...GatsbyDatoCmsFaviconMetaTags
@@ -31,19 +35,14 @@ const Layout: React.FC = ({ children }) => {
           max-width: 814px;
           margin: auto;
           min-height: 100vh;
-          padding: 16px 50px;
+          padding: 2rem 3rem;
           box-shadow: 0px 4px 70px rgba(0, 0, 0, 0.15);
         `}
       >
-        <h1
-          css={css`
-            margin-top: 0;
-            font-family: 'Dancing Script';
-            font-size: 30px;
-          `}
-        >
-          <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
-        </h1>
+        <Header
+          title={data.datoCmsSite.globalSeo.siteName}
+          subtitle={data.datoCmsSite.globalSeo.fallbackSeo.title}
+        />
         {children}
       </div>
     </>

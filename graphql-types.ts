@@ -4774,7 +4774,10 @@ export type StringQueryOperatorInput = {
 export type LayoutQueryVariables = {};
 
 
-export type LayoutQuery = { datoCmsSite?: Maybe<{ globalSeo?: Maybe<Pick<DatoCmsGlobalSeo, 'siteName'>>, faviconMetaTags?: Maybe<GatsbyDatoCmsFaviconMetaTagsFragment> }> };
+export type LayoutQuery = { datoCmsSite?: Maybe<{ globalSeo?: Maybe<(
+      Pick<DatoCmsGlobalSeo, 'siteName'>
+      & { fallbackSeo?: Maybe<Pick<DatoCmsSeoField, 'title'>> }
+    )>, faviconMetaTags?: Maybe<GatsbyDatoCmsFaviconMetaTagsFragment> }> };
 
 export type IndexPageQueryVariables = {};
 
