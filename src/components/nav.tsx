@@ -25,6 +25,7 @@ const Nav: React.FC = () => {
     >
       <NavLink to={'/'} title="Forside" />
       <NavLink to={'/blog'} title="Blog" />
+      <NavLink to={'/om-mig'} title="Om mig" />
       <NavLink to={'/kontakt'} title="Kontakt" />
     </nav>
   )

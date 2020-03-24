@@ -14,6 +14,32 @@ const Index: React.FC<IProps> = ({ data }) => {
     <Layout>
       <div
         css={css`
+          display: flex;
+        `}
+      >
+        <p
+          css={css`
+            font-family: 'Open Sans';
+            font-size: 1.3rem;
+            line-height: 2;
+          `}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+        <img
+          src="https://lorempixel.com/300/300/"
+          css={css`
+            border-radius: 6rem 0px;
+            width: 250px;
+            height: 300px;
+          `}
+        />
+      </div>
+      <div
+        css={css`
           display: grid;
           grid-template-columns: repeat(auto-fill, 200px);
           grid-gap: 10px;
