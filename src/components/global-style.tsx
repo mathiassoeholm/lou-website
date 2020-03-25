@@ -43,6 +43,12 @@ const GlobalStyle: React.FC = () => {
             url('/fonts/open-sans-v17-latin-700.woff') format('woff');
         }
 
+        *,
+        *:before,
+        *:after {
+          box-sizing: border-box;
+        }
+
         html {
           --html-background: #dcd7d3;
           --content-background: #ede4df;

@@ -4,6 +4,7 @@ import { css } from '@emotion/core'
 import { IndexPageQuery } from '../../graphql-types'
 import Layout from '../components/layout'
 import { ArticlePreview } from '../components/article-preview'
+import { Portrait } from '../components/portrait'
 
 interface IProps {
   data: IndexPageQuery
@@ -14,7 +15,9 @@ const Index: React.FC<IProps> = ({ data }) => {
     <Layout>
       <div
         css={css`
-          display: flex;
+          display: grid;
+          grid-auto-flow: column;
+          grid-gap: 2.5rem;
         `}
       >
         <p
@@ -26,17 +29,9 @@ const Index: React.FC<IProps> = ({ data }) => {
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          minim veniam, quis nostrud exercitation ullamco laboris
         </p>
-        <img
-          src="https://lorempixel.com/300/300/"
-          css={css`
-            border-radius: 6rem 0px;
-            width: 250px;
-            height: 300px;
-          `}
-        />
+        <Portrait />
       </div>
       <div
         css={css`
