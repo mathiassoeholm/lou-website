@@ -4421,6 +4421,7 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___previewMode' |
   'pluginCreator___pluginOptions___disableLiveReload' |
   'pluginCreator___pluginOptions___localeFallbacks___da' |
+  'pluginCreator___pluginOptions___alias___lib' |
   'pluginCreator___pluginOptions___path' |
   'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___nodeAPIs' |
@@ -4610,6 +4611,7 @@ export type SitePluginFieldsEnum =
   'pluginOptions___previewMode' |
   'pluginOptions___disableLiveReload' |
   'pluginOptions___localeFallbacks___da' |
+  'pluginOptions___alias___lib' |
   'pluginOptions___path' |
   'pluginOptions___pathCheck' |
   'nodeAPIs' |
@@ -4727,8 +4729,17 @@ export type SitePluginPluginOptions = {
   previewMode?: Maybe<Scalars['Boolean']>;
   disableLiveReload?: Maybe<Scalars['Boolean']>;
   localeFallbacks?: Maybe<SitePluginPluginOptionsLocaleFallbacks>;
+  alias?: Maybe<SitePluginPluginOptionsAlias>;
   path?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
+};
+
+export type SitePluginPluginOptionsAlias = {
+  lib?: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsAliasFilterInput = {
+  lib?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {
@@ -4736,6 +4747,7 @@ export type SitePluginPluginOptionsFilterInput = {
   previewMode?: Maybe<BooleanQueryOperatorInput>;
   disableLiveReload?: Maybe<BooleanQueryOperatorInput>;
   localeFallbacks?: Maybe<SitePluginPluginOptionsLocaleFallbacksFilterInput>;
+  alias?: Maybe<SitePluginPluginOptionsAliasFilterInput>;
   path?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };

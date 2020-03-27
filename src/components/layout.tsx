@@ -31,6 +31,7 @@ const Layout: React.FC = ({ children }) => {
       <GlobalStyle />
       <div
         css={css`
+          position: relative;
           background-color: var(--content-background);
           max-width: 814px;
           margin: auto;

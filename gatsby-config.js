@@ -16,5 +16,13 @@ module.exports = {
     },
     'gatsby-plugin-ts',
     'gatsby-plugin-emotion',
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          lib: 'src/lib',
+        },
+      },
+    },
   ],
 }
