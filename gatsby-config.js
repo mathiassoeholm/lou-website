@@ -2,6 +2,18 @@ require('dotenv').config()
 
 module.exports = {
   plugins: [
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        test: /\.js$|\.jsx|\.js|\.tsx$/,
+        exclude: /(node_modules|.cache|public)/,
+        stages: ['develop'],
+        options: {
+          emitWarning: true,
+          failOnError: false,
+        },
+      },
+    },
     'gatsby-transformer-remark',
     {
       resolve: `gatsby-source-datocms`,
@@ -17,7 +29,7 @@ module.exports = {
     'gatsby-plugin-ts',
     'gatsby-plugin-emotion',
     {
-      resolve: `gatsby-plugin-alias-imports`,
+      resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
           lib: 'src/lib',

@@ -4417,6 +4417,9 @@ export type SitePageFieldsEnum =
   'pluginCreator___resolve' |
   'pluginCreator___name' |
   'pluginCreator___version' |
+  'pluginCreator___pluginOptions___stages' |
+  'pluginCreator___pluginOptions___options___emitWarning' |
+  'pluginCreator___pluginOptions___options___failOnError' |
   'pluginCreator___pluginOptions___apiToken' |
   'pluginCreator___pluginOptions___previewMode' |
   'pluginCreator___pluginOptions___disableLiveReload' |
@@ -4607,6 +4610,9 @@ export type SitePluginFieldsEnum =
   'resolve' |
   'name' |
   'version' |
+  'pluginOptions___stages' |
+  'pluginOptions___options___emitWarning' |
+  'pluginOptions___options___failOnError' |
   'pluginOptions___apiToken' |
   'pluginOptions___previewMode' |
   'pluginOptions___disableLiveReload' |
@@ -4725,6 +4731,8 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
+  stages?: Maybe<Array<Maybe<Scalars['String']>>>;
+  options?: Maybe<SitePluginPluginOptionsOptions>;
   apiToken?: Maybe<Scalars['String']>;
   previewMode?: Maybe<Scalars['Boolean']>;
   disableLiveReload?: Maybe<Scalars['Boolean']>;
@@ -4743,6 +4751,8 @@ export type SitePluginPluginOptionsAliasFilterInput = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
+  stages?: Maybe<StringQueryOperatorInput>;
+  options?: Maybe<SitePluginPluginOptionsOptionsFilterInput>;
   apiToken?: Maybe<StringQueryOperatorInput>;
   previewMode?: Maybe<BooleanQueryOperatorInput>;
   disableLiveReload?: Maybe<BooleanQueryOperatorInput>;
@@ -4758,6 +4768,16 @@ export type SitePluginPluginOptionsLocaleFallbacks = {
 
 export type SitePluginPluginOptionsLocaleFallbacksFilterInput = {
   da?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsOptions = {
+  emitWarning?: Maybe<Scalars['Boolean']>;
+  failOnError?: Maybe<Scalars['Boolean']>;
+};
+
+export type SitePluginPluginOptionsOptionsFilterInput = {
+  emitWarning?: Maybe<BooleanQueryOperatorInput>;
+  failOnError?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
