@@ -13,6 +13,7 @@ const GlobalStyle: React.FC = () => {
           src: local(''),
             url('/fonts/dancing-script-v14-latin-regular.woff2') format('woff2'),
             url('/fonts/dancing-script-v14-latin-regular.woff') format('woff');
+          font-display: fallback;
         }
 
         /* open-sans-regular - latin */
@@ -23,6 +24,7 @@ const GlobalStyle: React.FC = () => {
           src: local('Open Sans Regular'), local('OpenSans-Regular'),
             url('/fonts/open-sans-v17-latin-regular.woff2') format('woff2'),
             url('/fonts/open-sans-v17-latin-regular.woff') format('woff');
+          font-display: fallback;
         }
         /* open-sans-600 - latin */
         @font-face {
@@ -32,6 +34,7 @@ const GlobalStyle: React.FC = () => {
           src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
             url('/fonts/open-sans-v17-latin-600.woff2') format('woff2'),
             url('/fonts/open-sans-v17-latin-600.woff') format('woff');
+          font-display: fallback;
         }
         /* open-sans-700 - latin */
         @font-face {
@@ -41,6 +44,7 @@ const GlobalStyle: React.FC = () => {
           src: local('Open Sans Bold'), local('OpenSans-Bold'),
             url('/fonts/open-sans-v17-latin-700.woff2') format('woff2'),
             url('/fonts/open-sans-v17-latin-700.woff') format('woff');
+          font-display: fallback;
         }
 
         *,

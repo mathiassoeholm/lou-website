@@ -28,7 +28,9 @@ const Header: React.FC<IProps> = props => {
           font-size: 2rem;
         `}
       >
-        <Link to="/">{title}</Link>
+        <Link to="/" tabIndex={-1}>
+          {title}
+        </Link>
       </h1>
       <h2
         css={css`

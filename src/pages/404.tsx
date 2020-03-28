@@ -1,10 +1,21 @@
 import React from 'react'
+import Layout from '../components/layout'
+import { css } from '@emotion/core'
 
 const NotFound: React.FC = () => {
   return (
-    <div>
-      <h1>Siden findes ikke 😧</h1>
-    </div>
+    <Layout>
+      <h1
+        css={css`
+          font-family: 'Open Sans';
+        `}
+      >
+        Siden findes ikke{' '}
+        <span role="img" aria-label="forpint emoji">
+          😧
+        </span>
+      </h1>
+    </Layout>
   )
 }
 
