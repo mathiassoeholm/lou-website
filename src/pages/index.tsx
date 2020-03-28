@@ -17,7 +17,8 @@ const Index: React.FC<IProps> = ({ data }) => {
         css={css`
           display: grid;
           grid-auto-flow: column;
-          grid-gap: 2.5rem;
+          grid-gap: 3rem;
+          align-items: center;
         `}
       >
         <div
@@ -25,6 +26,9 @@ const Index: React.FC<IProps> = ({ data }) => {
             font-family: 'Open Sans';
             font-size: 1.3rem;
             line-height: 2;
+            p {
+              margin: 0;
+            }
           `}
           dangerouslySetInnerHTML={{
             __html: data.datoCmsHome.welcomeTextNode.childMarkdownRemark.html,

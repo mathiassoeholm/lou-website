@@ -50,11 +50,10 @@ const GlobalStyle: React.FC = () => {
         }
 
         html {
-          --html-background: #dcd7d3;
-          --content-background: #ede4df;
+          --background-color: #ede4df;
           --accent-color: #b83e29;
 
-          background-color: var(--html-background);
+          background-color: var(--background-color);
           font-size: 15px;
         }
 

@@ -32,19 +32,23 @@ const Layout: React.FC = ({ children }) => {
       <div
         css={css`
           position: relative;
-          background-color: var(--content-background);
-          max-width: 814px;
+          max-width: 914px;
           margin: auto;
           min-height: 100vh;
           padding: 2rem 3rem;
-          box-shadow: 0px 4px 70px rgba(0, 0, 0, 0.15);
         `}
       >
         <Header
           title={data.datoCmsSite.globalSeo.siteName}
           subtitle={data.datoCmsSite.globalSeo.fallbackSeo.title}
         />
-        {children}
+        <div
+          css={css`
+            padding-top: 1rem;
+          `}
+        >
+          {children}
+        </div>
       </div>
     </>
   )
