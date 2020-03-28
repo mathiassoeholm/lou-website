@@ -20,18 +20,17 @@ const Index: React.FC<IProps> = ({ data }) => {
           grid-gap: 2.5rem;
         `}
       >
-        <p
+        <div
           css={css`
             font-family: 'Open Sans';
             font-size: 1.3rem;
             line-height: 2;
           `}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris
-        </p>
-        <Portrait />
+          dangerouslySetInnerHTML={{
+            __html: data.datoCmsHome.welcomeTextNode.childMarkdownRemark.html,
+          }}
+        />
+        <Portrait fixed={data.datoCmsHome.portrait.fixed} />
       </div>
       <div
         css={css`
@@ -63,6 +62,22 @@ export const query = graphql`
               ...GatsbyDatoCmsFluid
             }
           }
+        }
+      }
+    }
+    datoCmsHome {
+      portrait {
+        fixed(
+          width: 200
+          height: 250
+          imgixParams: { fm: "jpg", auto: "compress" }
+        ) {
+          ...GatsbyDatoCmsFixed
+        }
+      }
+      welcomeTextNode {
+        childMarkdownRemark {
+          html
         }
       }
     }

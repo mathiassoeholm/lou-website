@@ -1,16 +1,17 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import Img, { GatsbyImageProps, FixedObject } from 'gatsby-image'
 
-const PORTRAIT_WIDTH = 200
-const PORTRAIT_HEIGHT = 250
 const BORDER_RADIUS = 5
 
-const Portrait: React.FC = () => {
+const Portrait: React.FC<GatsbyImageProps> = props => {
+  const fixedObject = props.fixed as FixedObject
+
   return (
     <div
       css={css`
         position: relative;
-        height: ${PORTRAIT_HEIGHT}px;
+        height: ${fixedObject.height}px;
       `}
     >
       <div
@@ -24,12 +25,12 @@ const Portrait: React.FC = () => {
           border: 2px solid var(--accent-color);
         `}
       />
-      <img
-        src="https://lorempixel.com/300/300/"
+      <Img
+        {...props}
         css={css`
           border-radius: ${BORDER_RADIUS}rem 0px;
-          width: ${PORTRAIT_WIDTH}px;
-          height: ${PORTRAIT_HEIGHT}px;
+          width: ${fixedObject.width}px;
+          height: ${fixedObject.height}px;
           object-fit: cover;
           position: relative;
           transform: translate(-0.5rem, -0.5rem);
