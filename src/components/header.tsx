@@ -26,6 +26,7 @@ const Header: React.FC<IProps> = props => {
           margin: 0;
           font-family: 'Dancing Script';
           font-size: 2rem;
+          font-weight: 400;
         `}
       >
         <Link to="/" tabIndex={-1}>

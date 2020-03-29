@@ -32,10 +32,10 @@ const Layout: React.FC = ({ children }) => {
       <div
         css={css`
           position: relative;
-          max-width: 914px;
+          max-width: 814px;
           margin: auto;
           min-height: 100vh;
-          padding: 2rem 3rem;
+          padding: 1rem 1rem;
         `}
       >
         <Header
@@ -44,7 +44,7 @@ const Layout: React.FC = ({ children }) => {
         />
         <div
           css={css`
-            padding-top: 1rem;
+            padding-top: 2rem;
           `}
         >
           {children}

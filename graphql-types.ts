@@ -60,6 +60,34 @@ export type DatoCmsAllLocalesForDatoCmsArticleContentFilterListInput = {
   elemMatch?: Maybe<DatoCmsAllLocalesForDatoCmsArticleContentFilterInput>;
 };
 
+export type DatoCmsAllLocalesForDatoCmsHomeArticlesSectionHeader = {
+  locale?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomeArticlesSectionHeaderFilterInput = {
+  locale?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomeArticlesSectionHeaderFilterListInput = {
+  elemMatch?: Maybe<DatoCmsAllLocalesForDatoCmsHomeArticlesSectionHeaderFilterInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomeReferencesSectionHeader = {
+  locale?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomeReferencesSectionHeaderFilterInput = {
+  locale?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomeReferencesSectionHeaderFilterListInput = {
+  elemMatch?: Maybe<DatoCmsAllLocalesForDatoCmsHomeReferencesSectionHeaderFilterInput>;
+};
+
 export type DatoCmsAllLocalesForDatoCmsHomeWelcomeText = {
   locale?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
@@ -1439,6 +1467,10 @@ export type DatoCmsHome = Node & {
   welcomeText?: Maybe<Scalars['String']>;
   welcomeTextNode?: Maybe<DatoCmsTextNode>;
   _allWelcomeTextLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsHomeWelcomeText>>>;
+  referencesSectionHeader?: Maybe<Scalars['String']>;
+  _allReferencesSectionHeaderLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsHomeReferencesSectionHeader>>>;
+  articlesSectionHeader?: Maybe<Scalars['String']>;
+  _allArticlesSectionHeaderLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsHomeArticlesSectionHeader>>>;
   meta?: Maybe<DatoCmsMetaField>;
   originalId?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
@@ -1639,6 +1671,14 @@ export type DatoCmsHomeFieldsEnum =
   '_allWelcomeTextLocales___valueNode___childMarkdownRemark___timeToRead' |
   '_allWelcomeTextLocales___valueNode___childMarkdownRemark___tableOfContents' |
   '_allWelcomeTextLocales___valueNode___childMarkdownRemark___children' |
+  'referencesSectionHeader' |
+  '_allReferencesSectionHeaderLocales' |
+  '_allReferencesSectionHeaderLocales___locale' |
+  '_allReferencesSectionHeaderLocales___value' |
+  'articlesSectionHeader' |
+  '_allArticlesSectionHeaderLocales' |
+  '_allArticlesSectionHeaderLocales___locale' |
+  '_allArticlesSectionHeaderLocales___value' |
   'meta___createdAt' |
   'meta___updatedAt' |
   'meta___publishedAt' |
@@ -1843,6 +1883,10 @@ export type DatoCmsHomeFilterInput = {
   welcomeText?: Maybe<StringQueryOperatorInput>;
   welcomeTextNode?: Maybe<DatoCmsTextNodeFilterInput>;
   _allWelcomeTextLocales?: Maybe<DatoCmsAllLocalesForDatoCmsHomeWelcomeTextFilterListInput>;
+  referencesSectionHeader?: Maybe<StringQueryOperatorInput>;
+  _allReferencesSectionHeaderLocales?: Maybe<DatoCmsAllLocalesForDatoCmsHomeReferencesSectionHeaderFilterListInput>;
+  articlesSectionHeader?: Maybe<StringQueryOperatorInput>;
+  _allArticlesSectionHeaderLocales?: Maybe<DatoCmsAllLocalesForDatoCmsHomeArticlesSectionHeaderFilterListInput>;
   meta?: Maybe<DatoCmsMetaFieldFilterInput>;
   originalId?: Maybe<StringQueryOperatorInput>;
   locale?: Maybe<StringQueryOperatorInput>;
@@ -4196,6 +4240,10 @@ export type QueryDatoCmsHomeArgs = {
   welcomeText?: Maybe<StringQueryOperatorInput>;
   welcomeTextNode?: Maybe<DatoCmsTextNodeFilterInput>;
   _allWelcomeTextLocales?: Maybe<DatoCmsAllLocalesForDatoCmsHomeWelcomeTextFilterListInput>;
+  referencesSectionHeader?: Maybe<StringQueryOperatorInput>;
+  _allReferencesSectionHeaderLocales?: Maybe<DatoCmsAllLocalesForDatoCmsHomeReferencesSectionHeaderFilterListInput>;
+  articlesSectionHeader?: Maybe<StringQueryOperatorInput>;
+  _allArticlesSectionHeaderLocales?: Maybe<DatoCmsAllLocalesForDatoCmsHomeArticlesSectionHeaderFilterListInput>;
   meta?: Maybe<DatoCmsMetaFieldFilterInput>;
   originalId?: Maybe<StringQueryOperatorInput>;
   locale?: Maybe<StringQueryOperatorInput>;
@@ -5294,7 +5342,10 @@ export type IndexPageQueryVariables = {};
 export type IndexPageQuery = { allDatoCmsArticle: { edges: Array<{ node: (
         Pick<DatoCmsArticle, 'id' | 'title' | 'slug'>
         & { coverImage?: Maybe<{ fluid?: Maybe<GatsbyDatoCmsFluidFragment> }> }
-      ) }> }, datoCmsHome?: Maybe<{ portrait?: Maybe<{ fixed?: Maybe<GatsbyDatoCmsFixedFragment> }>, welcomeTextNode?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }> };
+      ) }> }, datoCmsHome?: Maybe<(
+    Pick<DatoCmsHome, 'referencesSectionHeader' | 'articlesSectionHeader'>
+    & { portrait?: Maybe<{ fixed?: Maybe<GatsbyDatoCmsFixedFragment> }>, welcomeTextNode?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }
+  )> };
 
 export type ArticleQueryVariables = {
   slug: Scalars['String'];

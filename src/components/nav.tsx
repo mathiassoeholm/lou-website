@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import { Link } from 'gatsby'
 import { css } from '@emotion/core'
-import { md } from 'lib/css-in-js'
+import { sm } from 'lib/css-in-js'
 import { FiMenu } from 'react-icons/fi'
 import { useOnClickOutside } from 'lib/hooks'
 
@@ -47,8 +47,8 @@ const Nav: React.FC = () => {
         css={css`
           position: absolute;
           z-index: 2;
-          top: 2rem;
-          right: 3rem;
+          top: 1rem;
+          right: 1rem;
           display: grid;
           font-family: 'Open Sans';
           font-weight: 600;
@@ -58,7 +58,7 @@ const Nav: React.FC = () => {
           grid-gap: 2px;
 
           .menu-button {
-            font-size: 2.5rem;
+            font-size: 2rem;
             padding: 0.25rem;
             background: ${menuOpen ? 'white' : 'none'};
             cursor: pointer;
@@ -76,7 +76,7 @@ const Nav: React.FC = () => {
             padding: 0.25rem;
           }
 
-          ${md} {
+          ${sm} {
             font-size: 1rem;
             grid-auto-flow: column;
             grid-gap: 1rem;

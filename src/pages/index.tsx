@@ -5,6 +5,8 @@ import { IndexPageQuery } from '../../graphql-types'
 import Layout from '../components/layout'
 import { ArticlePreview } from '../components/article-preview'
 import { Portrait } from '../components/portrait'
+import SectionHeader from '../components/section-header'
+import { md, sm } from 'lib/css-in-js'
 
 interface IProps {
   data: IndexPageQuery
@@ -19,10 +21,22 @@ const Index: React.FC<IProps> = ({ data }) => {
           grid-auto-flow: column;
           grid-gap: 3rem;
           align-items: center;
+
+          grid-template-areas:
+            'portrait'
+            'welcome'
+            'articles';
+
+          ${md} {
+            grid-template-areas:
+              'welcome portrait'
+              'articles articles';
+          }
         `}
       >
-        <div
+        <section
           css={css`
+            grid-area: welcome;
             font-family: 'Open Sans';
             font-size: 1.3rem;
             line-height: 2;
@@ -34,18 +48,39 @@ const Index: React.FC<IProps> = ({ data }) => {
             __html: data.datoCmsHome.welcomeTextNode.childMarkdownRemark.html,
           }}
         />
-        <Portrait fixed={data.datoCmsHome.portrait.fixed} />
-      </div>
-      <div
-        css={css`
-          display: grid;
-          grid-template-columns: repeat(auto-fill, 200px);
-          grid-gap: 10px;
-        `}
-      >
-        {data.allDatoCmsArticle.edges.map(({ node }) => (
-          <ArticlePreview key={node.id} article={node} />
-        ))}
+        <Portrait
+          css={css`
+            grid-area: portrait;
+          `}
+          fixed={data.datoCmsHome.portrait.fixed}
+        />
+        <section
+          css={css`
+            grid-area: articles;
+            display: grid;
+            grid-row-gap: 3rem;
+            justify-content: center;
+
+            ${sm} {
+              justify-content: stretch;
+            }
+          `}
+        >
+          <SectionHeader>
+            {data.datoCmsHome.articlesSectionHeader}
+          </SectionHeader>
+          <div
+            css={css`
+              display: grid;
+              grid-template-columns: repeat(auto-fill, 200px);
+              grid-gap: 10px;
+            `}
+          >
+            {data.allDatoCmsArticle.edges.map(({ node }) => (
+              <ArticlePreview key={node.id} article={node} />
+            ))}
+          </div>
+        </section>
       </div>
     </Layout>
   )
@@ -84,6 +119,8 @@ export const query = graphql`
           html
         }
       }
+      referencesSectionHeader
+      articlesSectionHeader
     }
   }
 `

@@ -12,6 +12,7 @@ const Portrait: React.FC<GatsbyImageProps> = props => {
       css={css`
         position: relative;
         height: ${fixedObject.height}px;
+        justify-self: center;
       `}
     >
       <div
