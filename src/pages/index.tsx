@@ -72,8 +72,8 @@ const Index: React.FC<IProps> = ({ data }) => {
           <div
             css={css`
               display: grid;
-              grid-template-columns: repeat(auto-fill, 200px);
-              grid-gap: 10px;
+              grid-gap: 3rem;
+              grid-template-columns: repeat(auto-fill, minmax(327px, 1fr));
             `}
           >
             {data.allDatoCmsArticle.edges.map(({ node }) => (
@@ -95,11 +95,15 @@ export const query = graphql`
         node {
           id
           title
+          introduction
           slug
           coverImage {
             fluid(maxWidth: 200, imgixParams: { fm: "jpg", auto: "compress" }) {
               ...GatsbyDatoCmsFluid
             }
+          }
+          meta {
+            firstPublishedAt
           }
         }
       }

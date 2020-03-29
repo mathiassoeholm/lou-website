@@ -60,6 +60,22 @@ export type DatoCmsAllLocalesForDatoCmsArticleContentFilterListInput = {
   elemMatch?: Maybe<DatoCmsAllLocalesForDatoCmsArticleContentFilterInput>;
 };
 
+export type DatoCmsAllLocalesForDatoCmsArticleIntroduction = {
+  locale?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+  valueNode?: Maybe<DatoCmsTextNode>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsArticleIntroductionFilterInput = {
+  locale?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+  valueNode?: Maybe<DatoCmsTextNodeFilterInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsArticleIntroductionFilterListInput = {
+  elemMatch?: Maybe<DatoCmsAllLocalesForDatoCmsArticleIntroductionFilterInput>;
+};
+
 export type DatoCmsAllLocalesForDatoCmsHomeArticlesSectionHeader = {
   locale?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
@@ -108,6 +124,9 @@ export type DatoCmsArticle = Node & {
   title?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   coverImage?: Maybe<DatoCmsFileField>;
+  introduction?: Maybe<Scalars['String']>;
+  introductionNode?: Maybe<DatoCmsTextNode>;
+  _allIntroductionLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsArticleIntroduction>>>;
   content?: Maybe<Scalars['String']>;
   contentNode?: Maybe<DatoCmsTextNode>;
   _allContentLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsArticleContent>>>;
@@ -221,6 +240,100 @@ export type DatoCmsArticleFieldsEnum =
   'coverImage___alt' |
   'coverImage___title' |
   'coverImage___customData' |
+  'introduction' |
+  'introductionNode___id' |
+  'introductionNode___parent___id' |
+  'introductionNode___parent___parent___id' |
+  'introductionNode___parent___parent___children' |
+  'introductionNode___parent___children' |
+  'introductionNode___parent___children___id' |
+  'introductionNode___parent___children___children' |
+  'introductionNode___parent___internal___content' |
+  'introductionNode___parent___internal___contentDigest' |
+  'introductionNode___parent___internal___description' |
+  'introductionNode___parent___internal___fieldOwners' |
+  'introductionNode___parent___internal___ignoreType' |
+  'introductionNode___parent___internal___mediaType' |
+  'introductionNode___parent___internal___owner' |
+  'introductionNode___parent___internal___type' |
+  'introductionNode___children' |
+  'introductionNode___children___id' |
+  'introductionNode___children___parent___id' |
+  'introductionNode___children___parent___children' |
+  'introductionNode___children___children' |
+  'introductionNode___children___children___id' |
+  'introductionNode___children___children___children' |
+  'introductionNode___children___internal___content' |
+  'introductionNode___children___internal___contentDigest' |
+  'introductionNode___children___internal___description' |
+  'introductionNode___children___internal___fieldOwners' |
+  'introductionNode___children___internal___ignoreType' |
+  'introductionNode___children___internal___mediaType' |
+  'introductionNode___children___internal___owner' |
+  'introductionNode___children___internal___type' |
+  'introductionNode___internal___content' |
+  'introductionNode___internal___contentDigest' |
+  'introductionNode___internal___description' |
+  'introductionNode___internal___fieldOwners' |
+  'introductionNode___internal___ignoreType' |
+  'introductionNode___internal___mediaType' |
+  'introductionNode___internal___owner' |
+  'introductionNode___internal___type' |
+  'introductionNode___childMarkdownRemark___id' |
+  'introductionNode___childMarkdownRemark___frontmatter___title' |
+  'introductionNode___childMarkdownRemark___excerpt' |
+  'introductionNode___childMarkdownRemark___rawMarkdownBody' |
+  'introductionNode___childMarkdownRemark___html' |
+  'introductionNode___childMarkdownRemark___htmlAst' |
+  'introductionNode___childMarkdownRemark___excerptAst' |
+  'introductionNode___childMarkdownRemark___headings' |
+  'introductionNode___childMarkdownRemark___headings___value' |
+  'introductionNode___childMarkdownRemark___headings___depth' |
+  'introductionNode___childMarkdownRemark___timeToRead' |
+  'introductionNode___childMarkdownRemark___tableOfContents' |
+  'introductionNode___childMarkdownRemark___wordCount___paragraphs' |
+  'introductionNode___childMarkdownRemark___wordCount___sentences' |
+  'introductionNode___childMarkdownRemark___wordCount___words' |
+  'introductionNode___childMarkdownRemark___parent___id' |
+  'introductionNode___childMarkdownRemark___parent___children' |
+  'introductionNode___childMarkdownRemark___children' |
+  'introductionNode___childMarkdownRemark___children___id' |
+  'introductionNode___childMarkdownRemark___children___children' |
+  'introductionNode___childMarkdownRemark___internal___content' |
+  'introductionNode___childMarkdownRemark___internal___contentDigest' |
+  'introductionNode___childMarkdownRemark___internal___description' |
+  'introductionNode___childMarkdownRemark___internal___fieldOwners' |
+  'introductionNode___childMarkdownRemark___internal___ignoreType' |
+  'introductionNode___childMarkdownRemark___internal___mediaType' |
+  'introductionNode___childMarkdownRemark___internal___owner' |
+  'introductionNode___childMarkdownRemark___internal___type' |
+  '_allIntroductionLocales' |
+  '_allIntroductionLocales___locale' |
+  '_allIntroductionLocales___value' |
+  '_allIntroductionLocales___valueNode___id' |
+  '_allIntroductionLocales___valueNode___parent___id' |
+  '_allIntroductionLocales___valueNode___parent___children' |
+  '_allIntroductionLocales___valueNode___children' |
+  '_allIntroductionLocales___valueNode___children___id' |
+  '_allIntroductionLocales___valueNode___children___children' |
+  '_allIntroductionLocales___valueNode___internal___content' |
+  '_allIntroductionLocales___valueNode___internal___contentDigest' |
+  '_allIntroductionLocales___valueNode___internal___description' |
+  '_allIntroductionLocales___valueNode___internal___fieldOwners' |
+  '_allIntroductionLocales___valueNode___internal___ignoreType' |
+  '_allIntroductionLocales___valueNode___internal___mediaType' |
+  '_allIntroductionLocales___valueNode___internal___owner' |
+  '_allIntroductionLocales___valueNode___internal___type' |
+  '_allIntroductionLocales___valueNode___childMarkdownRemark___id' |
+  '_allIntroductionLocales___valueNode___childMarkdownRemark___excerpt' |
+  '_allIntroductionLocales___valueNode___childMarkdownRemark___rawMarkdownBody' |
+  '_allIntroductionLocales___valueNode___childMarkdownRemark___html' |
+  '_allIntroductionLocales___valueNode___childMarkdownRemark___htmlAst' |
+  '_allIntroductionLocales___valueNode___childMarkdownRemark___excerptAst' |
+  '_allIntroductionLocales___valueNode___childMarkdownRemark___headings' |
+  '_allIntroductionLocales___valueNode___childMarkdownRemark___timeToRead' |
+  '_allIntroductionLocales___valueNode___childMarkdownRemark___tableOfContents' |
+  '_allIntroductionLocales___valueNode___childMarkdownRemark___children' |
   'content' |
   'contentNode___id' |
   'contentNode___parent___id' |
@@ -600,6 +713,9 @@ export type DatoCmsArticleFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
   coverImage?: Maybe<DatoCmsFileFieldFilterInput>;
+  introduction?: Maybe<StringQueryOperatorInput>;
+  introductionNode?: Maybe<DatoCmsTextNodeFilterInput>;
+  _allIntroductionLocales?: Maybe<DatoCmsAllLocalesForDatoCmsArticleIntroductionFilterListInput>;
   content?: Maybe<StringQueryOperatorInput>;
   contentNode?: Maybe<DatoCmsTextNodeFilterInput>;
   _allContentLocales?: Maybe<DatoCmsAllLocalesForDatoCmsArticleContentFilterListInput>;
@@ -4210,6 +4326,9 @@ export type QueryDatoCmsArticleArgs = {
   title?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
   coverImage?: Maybe<DatoCmsFileFieldFilterInput>;
+  introduction?: Maybe<StringQueryOperatorInput>;
+  introductionNode?: Maybe<DatoCmsTextNodeFilterInput>;
+  _allIntroductionLocales?: Maybe<DatoCmsAllLocalesForDatoCmsArticleIntroductionFilterListInput>;
   content?: Maybe<StringQueryOperatorInput>;
   contentNode?: Maybe<DatoCmsTextNodeFilterInput>;
   _allContentLocales?: Maybe<DatoCmsAllLocalesForDatoCmsArticleContentFilterListInput>;
@@ -5340,8 +5459,8 @@ export type IndexPageQueryVariables = {};
 
 
 export type IndexPageQuery = { allDatoCmsArticle: { edges: Array<{ node: (
-        Pick<DatoCmsArticle, 'id' | 'title' | 'slug'>
-        & { coverImage?: Maybe<{ fluid?: Maybe<GatsbyDatoCmsFluidFragment> }> }
+        Pick<DatoCmsArticle, 'id' | 'title' | 'introduction' | 'slug'>
+        & { coverImage?: Maybe<{ fluid?: Maybe<GatsbyDatoCmsFluidFragment> }>, meta?: Maybe<Pick<DatoCmsMetaField, 'firstPublishedAt'>> }
       ) }> }, datoCmsHome?: Maybe<(
     Pick<DatoCmsHome, 'referencesSectionHeader' | 'articlesSectionHeader'>
     & { portrait?: Maybe<{ fixed?: Maybe<GatsbyDatoCmsFixedFragment> }>, welcomeTextNode?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }

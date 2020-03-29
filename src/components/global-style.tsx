@@ -52,6 +52,7 @@ const GlobalStyle: React.FC = () => {
         html {
           --background-color: #ede4df;
           --accent-color: #b83e29;
+          --card-color: #dcd7d3;
 
           background-color: var(--background-color);
           font-size: 15px;
