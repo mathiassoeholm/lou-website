@@ -66,14 +66,26 @@ const Index: React.FC<IProps> = ({ data }) => {
             }
           `}
         >
-          <SectionHeader>
+          <SectionHeader
+            css={css`
+              justify-self: center;
+
+              ${sm} {
+                justify-self: start;
+              }
+            `}
+          >
             {data.datoCmsHome.articlesSectionHeader}
           </SectionHeader>
           <div
             css={css`
               display: grid;
               grid-gap: 3rem;
-              grid-template-columns: repeat(auto-fill, minmax(327px, 1fr));
+              grid-template-columns: repeat(auto-fill, 327px);
+              justify-self: center;
+              ${md} {
+                width: 100%;
+              }
             `}
           >
             {data.allDatoCmsArticle.edges.map(({ node }) => (

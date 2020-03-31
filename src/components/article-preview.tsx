@@ -3,14 +3,14 @@ import { DatoCmsArticle } from '../../graphql-types'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
-import { useTruncateText } from 'lib/hooks'
+import { useTruncatedText } from 'lib/hooks'
 
 interface IProps {
   article: Partial<DatoCmsArticle>
 }
 
 const ArticlePreview: React.FC<IProps> = ({ article }) => {
-  const truncateRef = useTruncateText(article.introduction)
+  const truncateRef = useTruncatedText(article.introduction)
 
   return (
     <Link to={`/articles/${article.slug}`}>
@@ -19,7 +19,6 @@ const ArticlePreview: React.FC<IProps> = ({ article }) => {
           display: grid;
           grid-template-rows: 1fr 50%;
           height: 222px;
-          max-width: 327px;
           background: var(--card-color);
           grid-row-gap: 0.5rem;
         `}
@@ -66,9 +65,7 @@ const ArticlePreview: React.FC<IProps> = ({ article }) => {
               max-height: 100%;
               overflow: hidden;
             `}
-          >
-            {article.introduction}
-          </p>
+          />
         </div>
       </div>
     </Link>

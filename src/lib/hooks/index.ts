@@ -1,2 +1,2 @@
 export * from './use-on-click-outside'
-export * from './use-truncate-text'
+export * from './use-truncated-text'
