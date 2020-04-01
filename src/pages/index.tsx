@@ -80,9 +80,10 @@ const Index: React.FC<IProps> = ({ data }) => {
           <div
             css={css`
               display: grid;
-              grid-gap: 3rem;
-              grid-template-columns: repeat(auto-fill, 327px);
+              grid-gap: 4rem;
+              grid-template-columns: repeat(auto-fill, minmax(327px, 1fr));
               justify-self: center;
+              justify-content: space-between;
               ${md} {
                 width: 100%;
               }

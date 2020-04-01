@@ -56,6 +56,7 @@ const GlobalStyle: React.FC = () => {
 
           background-color: var(--background-color);
           font-size: 15px;
+          font-family: 'Open Sans';
         }
 
         button {

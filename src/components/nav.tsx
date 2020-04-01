@@ -2,7 +2,7 @@ import React, { useReducer } from 'react'
 import { Link } from 'gatsby'
 import { css } from '@emotion/core'
 import { sm } from 'lib/css-in-js'
-import { FiMenu } from 'react-icons/fi'
+import { FaHamburger } from 'react-icons/fa'
 import { useOnClickOutside } from 'lib/hooks'
 
 function NavLink(props: { to: string; title: string }) {
@@ -93,7 +93,7 @@ const Nav: React.FC = () => {
         `}
       >
         <button className="menu-button" onClick={toggleMenuOpen}>
-          <FiMenu />
+          <FaHamburger />
         </button>
         <NavLink to={'/'} title="Forside" />
         <NavLink to={'/blog'} title="Blog" />

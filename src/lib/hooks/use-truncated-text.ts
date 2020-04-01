@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useRef, useLayoutEffect } from 'react'
 
 function useTruncatedText(text: string) {
   const ref = useRef<HTMLElement>()
@@ -12,21 +12,19 @@ function useTruncatedText(text: string) {
     // http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/
     function truncate() {
       ref.current.innerText = text
+      const targetHeight = Math.max(0, ref.current.offsetHeight)
       const wordArray = text.split(' ')
-      while (ref.current.scrollHeight > ref.current.offsetHeight) {
+      while (ref.current.scrollHeight > targetHeight) {
         wordArray.pop()
-        ref.current.innerText = wordArray.join(' ') + '...'
+        ref.current.innerHTML = wordArray.join(' ') + '...'
       }
     }
 
-    truncate()
+    document.fonts.ready.then(truncate)
 
     if (ResizeObserver) {
       const observer = new ResizeObserver(() => {
-        // Unobserve to avoid endless recursion
-        observer.unobserve(ref.current)
         truncate()
-        observer.observe(ref.current)
       })
 
       observer.observe(ref.current)

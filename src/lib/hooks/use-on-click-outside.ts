@@ -12,8 +12,6 @@ function useOnClickOutside(
 
   useEffect(() => {
     function onClick(event: MouseEvent) {
-      console.log('clicked', event.target)
-
       if (
         (event.target === clickOutsideRef.current && includeSelf) ||
         !clickOutsideRef.current.contains(event.target as Node)
