@@ -5472,8 +5472,8 @@ export type ArticleQueryVariables = {
 
 
 export type ArticleQuery = { datoCmsArticle?: Maybe<(
-    Pick<DatoCmsArticle, 'title'>
-    & { seoMetaTags?: Maybe<GatsbyDatoCmsSeoMetaTagsFragment>, contentNode?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }>, coverImage?: Maybe<{ fluid?: Maybe<GatsbyDatoCmsFluidFragment> }> }
+    Pick<DatoCmsArticle, 'title' | 'introduction'>
+    & { seoMetaTags?: Maybe<GatsbyDatoCmsSeoMetaTagsFragment>, contentNode?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }>, coverImage?: Maybe<{ fluid?: Maybe<GatsbyDatoCmsFluidFragment> }>, meta?: Maybe<Pick<DatoCmsMetaField, 'firstPublishedAt'>> }
   )> };
 
 export type GatsbyDatoCmsResolutionsFragment = Pick<DatoCmsFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;

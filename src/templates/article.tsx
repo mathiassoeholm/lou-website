@@ -5,27 +5,64 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Layout from '../components/layout'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
+import { prettyDate } from 'lib/utils'
 
 interface IProps {
   data: ArticleQuery
 }
 
-const Article: React.FC<IProps> = ({ data }) => {
+const Article: React.FC<IProps> = props => {
+  const {
+    seoMetaTags,
+    title,
+    introduction,
+    coverImage,
+    contentNode,
+    meta,
+  } = props.data.datoCmsArticle
+
   return (
     <Layout>
+      <HelmetDatoCms seo={seoMetaTags} />
       <article
         css={css`
           max-width: 800px;
           margin: auto;
         `}
       >
-        <HelmetDatoCms seo={data.datoCmsArticle.seoMetaTags} />
-        {data.datoCmsArticle.coverImage && (
-          <Img fluid={data.datoCmsArticle.coverImage.fluid} />
-        )}
+        <h2
+          css={css`
+            text-align: center;
+            font-size: 2rem;
+          `}
+        >
+          {title}
+        </h2>
+        <p
+          css={css`
+            text-align: center;
+            color: #545454;
+          `}
+        >
+          {prettyDate(meta.firstPublishedAt, 'da-DK')}
+        </p>
+        <p
+          css={css`
+            font-family: 'Merriweather';
+            font-size: 1.1rem;
+            line-height: 1.5;
+          `}
+        >
+          {introduction}
+        </p>
+        {coverImage && <Img fluid={coverImage.fluid} />}
         <div
+          css={css`
+            font-family: 'Merriweather';
+            line-height: 1.5;
+          `}
           dangerouslySetInnerHTML={{
-            __html: data.datoCmsArticle.contentNode.childMarkdownRemark.html,
+            __html: contentNode.childMarkdownRemark.html,
           }}
         />
       </article>
@@ -51,6 +88,10 @@ export const query = graphql`
         fluid(maxWidth: 1200, imgixParams: { fm: "jpg", auto: "compress" }) {
           ...GatsbyDatoCmsFluid
         }
+      }
+      introduction
+      meta {
+        firstPublishedAt
       }
     }
   }

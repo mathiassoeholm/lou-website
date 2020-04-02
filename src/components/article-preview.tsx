@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import { useTruncatedText } from 'lib/hooks'
+import { prettyDate } from 'lib/utils'
 
 interface IProps {
   article: Partial<DatoCmsArticle>
@@ -49,14 +50,7 @@ const ArticlePreview: React.FC<IProps> = ({ article }) => {
               justify-self: end;
             `}
           >
-            {new Date(article.meta.firstPublishedAt).toLocaleDateString(
-              'da-DK',
-              {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              }
-            )}
+            {prettyDate(article.meta.firstPublishedAt, 'da-DK')}
           </span>
           <p
             ref={r => (truncateRef.current = r)}

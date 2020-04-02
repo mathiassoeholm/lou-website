@@ -42,6 +42,15 @@ const GlobalStyle: React.FC = () => {
             url('/fonts/open-sans-v17-latin-700.woff2') format('woff2'),
             url('/fonts/open-sans-v17-latin-700.woff') format('woff');
         }
+        /* merriweather-regular - latin */
+        @font-face {
+          font-family: 'Merriweather';
+          font-style: normal;
+          font-weight: 400;
+          src: local('Merriweather Regular'), local('Merriweather-Regular'),
+            url('/fonts/merriweather-v21-latin-regular.woff2') format('woff2'),
+            url('/fonts/merriweather-v21-latin-regular.woff') format('woff');
+        }
 
         *,
         *:before,
