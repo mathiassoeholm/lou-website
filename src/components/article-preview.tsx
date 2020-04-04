@@ -33,7 +33,7 @@ const ArticlePreview: React.FC<IProps> = ({ article }) => {
             grid-template-columns: minmax(0, 1fr) auto;
             grid-template-rows: auto 1fr;
             grid-gap: 0.5rem;
-            padding: 0.5rem;
+            padding: 1rem;
           `}
         >
           <h3

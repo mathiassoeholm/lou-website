@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import { sm } from 'lib/css-in-js'
 
 const SectionHeader: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
   children,
@@ -12,8 +13,12 @@ const SectionHeader: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
         font-family: 'Open Sans';
         font-size: 1.2rem;
         border-bottom: 2px solid var(--accent-color);
-        justify-self: start;
         padding-bottom: 0.25rem;
+        justify-self: center;
+
+        ${sm} {
+          justify-self: start;
+        }
       `}
       {...restProps}
     >

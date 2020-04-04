@@ -7,6 +7,7 @@ import { ArticlePreview } from '../components/article-preview'
 import { Portrait } from '../components/portrait'
 import SectionHeader from '../components/section-header'
 import { md, sm } from 'lib/css-in-js'
+import { Reference } from '../components/reference'
 
 interface IProps {
   data: IndexPageQuery
@@ -25,16 +26,18 @@ const Index: React.FC<IProps> = ({ data }) => {
           grid-template-areas:
             'portrait'
             'welcome'
+            'references'
             'articles';
 
           ${md} {
             grid-template-areas:
               'welcome portrait'
+              'references references'
               'articles articles';
           }
         `}
       >
-        <section
+        <article
           css={css`
             grid-area: welcome;
             font-family: 'Open Sans';
@@ -56,6 +59,33 @@ const Index: React.FC<IProps> = ({ data }) => {
         />
         <section
           css={css`
+            grid-area: references;
+            display: grid;
+            grid-row-gap: 3rem;
+          `}
+        >
+          <SectionHeader>
+            {data.datoCmsHome.referencesSectionHeader}
+          </SectionHeader>
+          <div
+            css={css`
+              display: grid;
+              grid-gap: 3rem;
+              justify-self: center;
+              justify-content: start;
+              grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+              ${md} {
+                width: 100%;
+              }
+            `}
+          >
+            {data.allDatoCmsReference.edges.map(({ node }) => (
+              <Reference key={node.id} reference={node} />
+            ))}
+          </div>
+        </section>
+        <section
+          css={css`
             grid-area: articles;
             display: grid;
             grid-row-gap: 3rem;
@@ -66,25 +96,19 @@ const Index: React.FC<IProps> = ({ data }) => {
             }
           `}
         >
-          <SectionHeader
-            css={css`
-              justify-self: center;
-
-              ${sm} {
-                justify-self: start;
-              }
-            `}
-          >
+          <SectionHeader>
             {data.datoCmsHome.articlesSectionHeader}
           </SectionHeader>
           <div
             css={css`
               display: grid;
-              grid-gap: 4rem;
-              grid-template-columns: repeat(auto-fill, minmax(327px, 1fr));
+              grid-gap: 3rem;
+              grid-template-columns: 1fr;
               justify-self: center;
               justify-content: space-between;
+
               ${md} {
+                grid-template-columns: repeat(auto-fill, minmax(327px, 1fr));
                 width: 100%;
               }
             `}
@@ -103,7 +127,7 @@ export default Index
 
 export const query = graphql`
   query IndexPage {
-    allDatoCmsArticle(sort: { fields: [position], order: ASC }) {
+    allDatoCmsArticle(sort: { fields: [position], order: ASC }, limit: 6) {
       edges {
         node {
           id
@@ -118,6 +142,16 @@ export const query = graphql`
           meta {
             firstPublishedAt
           }
+        }
+      }
+    }
+    allDatoCmsReference(sort: { fields: [position], order: ASC }) {
+      edges {
+        node {
+          id
+          text
+          author
+          company
         }
       }
     }
