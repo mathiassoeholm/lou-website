@@ -1,9 +1,10 @@
 import React, { useReducer } from 'react'
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import { sm } from 'lib/css-in-js'
 import { FaHamburger } from 'react-icons/fa'
 import { useOnClickOutside } from 'lib/hooks'
+import { NavQuery } from '../../graphql-types'
 
 function NavLink(props: { to: string; title: string }) {
   return (
@@ -15,6 +16,14 @@ function NavLink(props: { to: string; title: string }) {
 
 // TODO: Use fancy burger menu: https://codepen.io/ainalem/pen/LJYRxz
 const Nav: React.FC = () => {
+  const data = useStaticQuery<NavQuery>(graphql`
+    query Nav {
+      datoCmsHome {
+        menuName
+      }
+    }
+  `)
+
   const [menuOpen, toggleMenuOpen] = useReducer(s => !s, false)
 
   const { clickOutsideRef } = useOnClickOutside(
@@ -95,7 +104,7 @@ const Nav: React.FC = () => {
         <button className="menu-button" onClick={toggleMenuOpen}>
           <FaHamburger />
         </button>
-        <NavLink to={'/'} title="Forside" />
+        <NavLink to={'/'} title={data.datoCmsHome.menuName} />
         <NavLink to={'/blog'} title="Blog" />
         <NavLink to={'/om-mig'} title="Om mig" />
         <NavLink to={'/kontakt'} title="Kontakt" />

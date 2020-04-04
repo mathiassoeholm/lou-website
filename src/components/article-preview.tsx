@@ -41,6 +41,8 @@ const ArticlePreview: React.FC<IProps> = ({ article }) => {
               margin: 0;
               text-overflow: ellipsis;
               overflow: hidden;
+              /* Avoid chars like "g" being cut off because of overflow: hidden */
+              padding: 1px;
             `}
           >
             {article.title}

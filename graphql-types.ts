@@ -90,6 +90,20 @@ export type DatoCmsAllLocalesForDatoCmsHomeArticlesSectionHeaderFilterListInput 
   elemMatch?: Maybe<DatoCmsAllLocalesForDatoCmsHomeArticlesSectionHeaderFilterInput>;
 };
 
+export type DatoCmsAllLocalesForDatoCmsHomeMenuName = {
+  locale?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomeMenuNameFilterInput = {
+  locale?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomeMenuNameFilterListInput = {
+  elemMatch?: Maybe<DatoCmsAllLocalesForDatoCmsHomeMenuNameFilterInput>;
+};
+
 export type DatoCmsAllLocalesForDatoCmsHomeReferencesSectionHeader = {
   locale?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
@@ -1579,6 +1593,8 @@ export type DatoCmsGlobalSeoFilterInput = {
 };
 
 export type DatoCmsHome = Node & {
+  menuName?: Maybe<Scalars['String']>;
+  _allMenuNameLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsHomeMenuName>>>;
   portrait?: Maybe<DatoCmsFileField>;
   welcomeText?: Maybe<Scalars['String']>;
   welcomeTextNode?: Maybe<DatoCmsTextNode>;
@@ -1626,6 +1642,10 @@ export type DatoCmsHomeEdge = {
 };
 
 export type DatoCmsHomeFieldsEnum = 
+  'menuName' |
+  '_allMenuNameLocales' |
+  '_allMenuNameLocales___locale' |
+  '_allMenuNameLocales___value' |
   'portrait___size' |
   'portrait___width' |
   'portrait___height' |
@@ -1995,6 +2015,8 @@ export type DatoCmsHomeFieldsEnum =
   'internal___type';
 
 export type DatoCmsHomeFilterInput = {
+  menuName?: Maybe<StringQueryOperatorInput>;
+  _allMenuNameLocales?: Maybe<DatoCmsAllLocalesForDatoCmsHomeMenuNameFilterListInput>;
   portrait?: Maybe<DatoCmsFileFieldFilterInput>;
   welcomeText?: Maybe<StringQueryOperatorInput>;
   welcomeTextNode?: Maybe<DatoCmsTextNodeFilterInput>;
@@ -4355,6 +4377,8 @@ export type QueryAllDatoCmsArticleArgs = {
 
 
 export type QueryDatoCmsHomeArgs = {
+  menuName?: Maybe<StringQueryOperatorInput>;
+  _allMenuNameLocales?: Maybe<DatoCmsAllLocalesForDatoCmsHomeMenuNameFilterListInput>;
   portrait?: Maybe<DatoCmsFileFieldFilterInput>;
   welcomeText?: Maybe<StringQueryOperatorInput>;
   welcomeTextNode?: Maybe<DatoCmsTextNodeFilterInput>;
@@ -5455,6 +5479,11 @@ export type LayoutQuery = { datoCmsSite?: Maybe<{ globalSeo?: Maybe<(
       & { fallbackSeo?: Maybe<Pick<DatoCmsSeoField, 'title'>> }
     )>, faviconMetaTags?: Maybe<GatsbyDatoCmsFaviconMetaTagsFragment> }> };
 
+export type NavQueryVariables = {};
+
+
+export type NavQuery = { datoCmsHome?: Maybe<Pick<DatoCmsHome, 'menuName'>> };
+
 export type IndexPageQueryVariables = {};
 
 
@@ -5462,7 +5491,7 @@ export type IndexPageQuery = { allDatoCmsArticle: { edges: Array<{ node: (
         Pick<DatoCmsArticle, 'id' | 'title' | 'introduction' | 'slug'>
         & { coverImage?: Maybe<{ fluid?: Maybe<GatsbyDatoCmsFluidFragment> }>, meta?: Maybe<Pick<DatoCmsMetaField, 'firstPublishedAt'>> }
       ) }> }, datoCmsHome?: Maybe<(
-    Pick<DatoCmsHome, 'referencesSectionHeader' | 'articlesSectionHeader'>
+    Pick<DatoCmsHome, 'menuName' | 'referencesSectionHeader' | 'articlesSectionHeader'>
     & { portrait?: Maybe<{ fixed?: Maybe<GatsbyDatoCmsFixedFragment> }>, welcomeTextNode?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }
   )> };
 

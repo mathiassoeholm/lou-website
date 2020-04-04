@@ -111,7 +111,7 @@ export const query = graphql`
           introduction
           slug
           coverImage {
-            fluid(maxWidth: 200, imgixParams: { fm: "jpg", auto: "compress" }) {
+            fluid(maxWidth: 400, imgixParams: { fm: "jpg", auto: "compress" }) {
               ...GatsbyDatoCmsFluid
             }
           }
@@ -122,6 +122,7 @@ export const query = graphql`
       }
     }
     datoCmsHome {
+      menuName
       portrait {
         fixed(
           width: 200
