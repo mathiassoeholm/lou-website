@@ -67,7 +67,12 @@ const Article: React.FC<IProps> = props => {
           }}
         />
       </article>
-      <form name="comments-queue" data-netlify="true" action="/thanks">
+      <form
+        name="comments-queue"
+        method="post"
+        data-netlify="true"
+        action="/thanks"
+      >
         <input type="hidden" name="bot-field" />
         <input type="hidden" name="form-name" value="comments-queue" />
         <input name="article" type="hidden" value={slug} />
