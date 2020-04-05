@@ -7,9 +7,13 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "gatsby build",
+    "build": "npm-run-all build:*",
+    "build:lambda": "tsc --project tsconfig.lambda.json",
+    "build:lambda:watch": "yarn build:lambda -- -w",
+    "build:app": "gatsby build",
+    "dev": "npm-run-all --parallel build:lambda:watch netlifydev",
     "develop": "gatsby develop",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\""
+    "netlifydev": "netlify dev"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
@@ -38,6 +42,7 @@
     "gatsby-transformer-remark": "^2.7.0",
     "graphql": "^14.6.0",
     "normalize.css": "^8.0.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",

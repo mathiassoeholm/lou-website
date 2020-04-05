@@ -3,6 +3,7 @@
 
 # Build directory
 /public
+/built-lambda
 
 # Gatsby cache
 /.cache
@@ -11,3 +12,6 @@
 .DS_Store
 yarn-error.log
 .env
+
+# Local Netlify folder
+.netlify
