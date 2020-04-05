@@ -71,9 +71,18 @@ const Article: React.FC<IProps> = props => {
         name="comments-queue"
         method="post"
         data-netlify="true"
+        data-netlify-honeypot="anti-bot-field"
         action="/thanks"
       >
-        <input type="hidden" name="bot-field" />
+        <p
+          css={css`
+            visibility: hidden;
+          `}
+        >
+          <label>
+            Don’t fill this out if you're human: <input name="anti-bot-field" />
+          </label>
+        </p>
         <input type="hidden" name="form-name" value="comments-queue" />
         <input name="article" type="hidden" value={slug} />
         <p>
