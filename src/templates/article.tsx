@@ -13,6 +13,7 @@ interface IProps {
 
 const Article: React.FC<IProps> = props => {
   const {
+    slug,
     seoMetaTags,
     title,
     introduction,
@@ -66,6 +67,20 @@ const Article: React.FC<IProps> = props => {
           }}
         />
       </article>
+      <form name="comments-queue" method="POST" date-netlify="true">
+        <input name="article" type="hidden" value={slug} />
+        <p>
+          <label htmlFor="name">Navn</label>
+          <input type="text" name="name" id="name" />
+        </p>
+        <p>
+          <label htmlFor="comment">Kommentar</label>
+          <textarea name="comment" id="comment" />
+        </p>
+        <p>
+          <button type="submit">Indsend</button>
+        </p>
+      </form>
     </Layout>
   )
 }
@@ -75,6 +90,7 @@ export default Article
 export const query = graphql`
   query Article($slug: String!) {
     datoCmsArticle(slug: { eq: $slug }) {
+      slug
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
