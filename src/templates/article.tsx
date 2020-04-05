@@ -67,12 +67,7 @@ const Article: React.FC<IProps> = props => {
           }}
         />
       </article>
-      <form
-        name="comments-queue"
-        method="POST"
-        data-netlify="true"
-        action="/thanks"
-      >
+      <form name="comments-queue" data-netlify="true" action="/thanks">
         <input name="article" type="hidden" value={slug} />
         <p>
           <label htmlFor="name">Navn</label>
