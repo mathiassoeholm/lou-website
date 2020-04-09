@@ -5552,6 +5552,7 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___disableLiveReload' |
   'pluginCreator___pluginOptions___localeFallbacks___da' |
   'pluginCreator___pluginOptions___alias___lib' |
+  'pluginCreator___pluginOptions___alias___api' |
   'pluginCreator___pluginOptions___path' |
   'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___nodeAPIs' |
@@ -5745,6 +5746,7 @@ export type SitePluginFieldsEnum =
   'pluginOptions___disableLiveReload' |
   'pluginOptions___localeFallbacks___da' |
   'pluginOptions___alias___lib' |
+  'pluginOptions___alias___api' |
   'pluginOptions___path' |
   'pluginOptions___pathCheck' |
   'nodeAPIs' |
@@ -5871,10 +5873,12 @@ export type SitePluginPluginOptions = {
 
 export type SitePluginPluginOptionsAlias = {
   lib?: Maybe<Scalars['String']>;
+  api?: Maybe<Scalars['String']>;
 };
 
 export type SitePluginPluginOptionsAliasFilterInput = {
   lib?: Maybe<StringQueryOperatorInput>;
+  api?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {

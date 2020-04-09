@@ -3,7 +3,7 @@
 
 # Build directory
 /public
-/built-lambda
+/backend-build
 
 # Gatsby cache
 /.cache

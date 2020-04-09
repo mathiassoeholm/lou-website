@@ -8,16 +8,17 @@
   "private": true,
   "scripts": {
     "build": "npm-run-all build:*",
-    "build:lambda": "tsc --project tsconfig.lambda.json",
-    "build:lambda:watch": "yarn build:lambda -- -w",
+    "build:backend": "tsc --project tsconfig.backend.json",
+    "build:backend:watch": "yarn build:backend -- -w",
     "build:app": "gatsby build",
-    "dev": "npm-run-all --parallel build:lambda:watch netlifydev",
+    "dev": "npm-run-all --parallel build:backend:watch netlifydev",
     "develop": "gatsby develop",
     "netlifydev": "netlify dev"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
+    "@sendgrid/mail": "^7.0.0",
     "@types/aws-lambda": "^8.10.47",
     "@types/css-font-loading-module": "^0.0.4",
     "@types/node": "^13.9.1",
@@ -45,6 +46,7 @@
     "normalize.css": "^8.0.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
+    "query-string": "^6.12.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-helmet": "^5.2.1",

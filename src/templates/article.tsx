@@ -1,17 +1,27 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { ArticleQuery } from '../../graphql-types'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
-import Layout from '../components/layout'
-import Img from 'gatsby-image'
-import { css } from '@emotion/core'
-import { prettyDate } from 'lib/utils'
+import React, { useState } from "react";
+import { graphql } from "gatsby";
+import { ArticleQuery } from "../../graphql-types";
+import { HelmetDatoCms } from "gatsby-source-datocms";
+import Layout from "../components/layout";
+import Img from "gatsby-image";
+import { css } from "@emotion/core";
+import { prettyDate } from "lib/utils";
+import * as api from "api";
+import { NewComment } from "api";
 
 interface IProps {
-  data: ArticleQuery
+  data: ArticleQuery;
 }
 
-const Article: React.FC<IProps> = props => {
+type CommentStatus =
+  | { id: "editing" }
+  | { id: "error"; message: string }
+  | { id: "submitting" }
+  | { id: "success" };
+
+const MAX_COMMENT_LENGTH = 1000;
+
+const Article: React.FC<IProps> = (props) => {
   const {
     slug,
     seoMetaTags,
@@ -20,7 +30,38 @@ const Article: React.FC<IProps> = props => {
     coverImage,
     contentNode,
     meta,
-  } = props.data.datoCmsArticle
+  } = props.data.datoCmsArticle;
+
+  const [commentStatus, setCommentStatus] = useState<CommentStatus>({
+    id: "editing",
+  });
+
+  const [newComment, setNewComment] = useState<NewComment>({
+    author: "",
+    text: "",
+    articleSlug: slug,
+  });
+
+  const commentIsTooLong = newComment.text.length > MAX_COMMENT_LENGTH;
+
+  function onChangeInput(
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    const { name, value } = event.target;
+    setNewComment({ ...newComment, [name]: value });
+  }
+
+  async function onSubmitComment(event: React.FormEvent) {
+    event.stopPropagation();
+    setCommentStatus({ id: "submitting" });
+
+    try {
+      await api.comment(newComment);
+      setCommentStatus({ id: "success" });
+    } catch (e) {
+      setCommentStatus({ id: "error", message: e.message });
+    }
+  }
 
   return (
     <Layout>
@@ -45,11 +86,11 @@ const Article: React.FC<IProps> = props => {
             color: #545454;
           `}
         >
-          {prettyDate(meta.firstPublishedAt, 'da-DK')}
+          {prettyDate(meta.firstPublishedAt, "da-DK")}
         </p>
         <p
           css={css`
-            font-family: 'Merriweather';
+            font-family: "Merriweather";
             font-size: 1.1rem;
             line-height: 1.5;
           `}
@@ -59,7 +100,7 @@ const Article: React.FC<IProps> = props => {
         {coverImage && <Img fluid={coverImage.fluid} />}
         <div
           css={css`
-            font-family: 'Merriweather';
+            font-family: "Merriweather";
             line-height: 1.5;
           `}
           dangerouslySetInnerHTML={{
@@ -67,41 +108,66 @@ const Article: React.FC<IProps> = props => {
           }}
         />
       </article>
-      <form
-        name="comments-queue"
-        method="post"
-        data-netlify="true"
-        data-netlify-honeypot="anti-bot-field"
-        action="/thanks"
-      >
-        <p
-          css={css`
-            visibility: hidden;
-          `}
-        >
-          <label>
-            Don’t fill this out if you're human: <input name="anti-bot-field" />
-          </label>
-        </p>
-        <input type="hidden" name="form-name" value="comments-queue" />
-        <input name="article" type="hidden" value={slug} />
-        <p>
-          <label htmlFor="name">Navn</label>
-          <input type="text" name="name" id="name" />
-        </p>
-        <p>
-          <label htmlFor="comment">Kommentar</label>
-          <textarea name="comment" id="comment" />
-        </p>
-        <p>
-          <button type="submit">Indsend</button>
-        </p>
-      </form>
+      {commentStatus.id === "submitting" && <p>Sender kommentar</p>}
+      {commentStatus.id === "error" && (
+        <p>Der skete en fejl: {commentStatus.message}</p>
+      )}
+      {commentStatus.id === "editing" && (
+        <form onSubmit={onSubmitComment}>
+          <p>
+            <label htmlFor="author">Navn</label>
+            <input
+              type="text"
+              name="author"
+              id="author"
+              onChange={onChangeInput}
+              value={newComment.author}
+            />
+          </p>
+          <p>
+            <label htmlFor="text">
+              Kommentar{" "}
+              <span
+                css={css`
+                  color: ${commentIsTooLong ? "red" : "inherit"};
+                `}
+              >
+                ({newComment.text.length}/{MAX_COMMENT_LENGTH})
+              </span>
+            </label>
+            <textarea
+              name="text"
+              id="text"
+              onChange={onChangeInput}
+              value={newComment.text}
+            />
+          </p>
+          <p>
+            <button type="submit" disabled={commentIsTooLong}>
+              Indsend
+            </button>
+          </p>
+        </form>
+      )}
+      {commentStatus.id === "success" && (
+        <>
+          <h2>
+            Tak for din kommentar!{" "}
+            <span role="img" aria-label="et rødt hjerte">
+              ❤️
+            </span>
+          </h2>
+          <p>
+            Den skal lige godkendes inden den dukker op på siden, så jeg ved at
+            det ikke er spam.
+          </p>
+        </>
+      )}
     </Layout>
-  )
-}
+  );
+};
 
-export default Article
+export default Article;
 
 export const query = graphql`
   query Article($slug: String!) {
@@ -127,4 +193,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

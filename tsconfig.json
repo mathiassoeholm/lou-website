@@ -11,8 +11,9 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./src",
     "paths": {
-      "lib/*": ["lib/*"]
+      "lib/*": ["lib/*"],
+      "api/*": ["api/*"]
     }
   },
-  "exclude": ["src/lambda"]
+  "exclude": ["src/backend"]
 }
