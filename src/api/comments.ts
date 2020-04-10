@@ -4,13 +4,20 @@ interface NewComment {
   articleSlug: string;
 }
 
+interface VerifiedComment {
+  id: string;
+  date: string;
+  author: string;
+  text: string;
+}
+
 async function comment(newComment: NewComment) {
   const response = await fetch(`/.netlify/functions/comment`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
-    body: JSON.stringify(newComment),
+    body: JSON.stringify(newComment)
   });
 
   if (!response.ok) {
@@ -20,4 +27,4 @@ async function comment(newComment: NewComment) {
   return response;
 }
 
-export { comment, NewComment };
+export { comment, NewComment, VerifiedComment };

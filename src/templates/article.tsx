@@ -3,11 +3,13 @@ import { graphql } from "gatsby";
 import { ArticleQuery } from "../../graphql-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/layout";
+import { Comment } from "../components/comment";
 import Img from "gatsby-image";
 import { css } from "@emotion/core";
 import { prettyDate } from "lib/utils";
 import * as api from "api";
-import { NewComment } from "api";
+import { NewComment, VerifiedComment } from "api";
+import commentsData from "../data/comments.json";
 
 interface IProps {
   data: ArticleQuery;
@@ -21,7 +23,7 @@ type CommentStatus =
 
 const MAX_COMMENT_LENGTH = 1000;
 
-const Article: React.FC<IProps> = (props) => {
+const Article: React.FC<IProps> = props => {
   const {
     slug,
     seoMetaTags,
@@ -29,17 +31,19 @@ const Article: React.FC<IProps> = (props) => {
     introduction,
     coverImage,
     contentNode,
-    meta,
+    meta
   } = props.data.datoCmsArticle;
 
+  const comments = (commentsData[slug] ?? []) as VerifiedComment[];
+
   const [commentStatus, setCommentStatus] = useState<CommentStatus>({
-    id: "editing",
+    id: "editing"
   });
 
   const [newComment, setNewComment] = useState<NewComment>({
     author: "",
     text: "",
-    articleSlug: slug,
+    articleSlug: slug
   });
 
   const commentIsTooLong = newComment.text.length > MAX_COMMENT_LENGTH;
@@ -104,7 +108,7 @@ const Article: React.FC<IProps> = (props) => {
             line-height: 1.5;
           `}
           dangerouslySetInnerHTML={{
-            __html: contentNode.childMarkdownRemark.html,
+            __html: contentNode.childMarkdownRemark.html
           }}
         />
       </article>
@@ -113,7 +117,14 @@ const Article: React.FC<IProps> = (props) => {
         <p>Der skete en fejl: {commentStatus.message}</p>
       )}
       {commentStatus.id === "editing" && (
-        <form onSubmit={onSubmitComment}>
+        <form
+          onSubmit={onSubmitComment}
+          css={css`
+            label {
+              display: block;
+            }
+          `}
+        >
           <p>
             <label htmlFor="author">Navn</label>
             <input
@@ -163,6 +174,9 @@ const Article: React.FC<IProps> = (props) => {
           </p>
         </>
       )}
+      {comments.map(comment => (
+        <Comment comment={comment} />
+      ))}
     </Layout>
   );
 };
