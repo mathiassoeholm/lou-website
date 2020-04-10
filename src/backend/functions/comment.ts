@@ -13,6 +13,11 @@ sgMail.setApiKey(process.env.SEND_GRID_API_KEY ?? "");
 export const handler: Handler = async (event) => {
   let statusCode = 500;
   try {
+    if (!event.body) {
+      statusCode = 400;
+      throw new Error("The request should have a body");
+    }
+
     const { text, author, articleSlug } = JSON.parse(event.body);
 
     if (!text || !author || !articleSlug) {
