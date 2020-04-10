@@ -1,14 +1,15 @@
 import sgMail from "@sendgrid/mail";
+import crypto from "crypto";
 import queryString from "query-string";
 import { Handler } from "../@types/netlify-functions";
 import { sign } from "../signing";
 
 sgMail.setApiKey(process.env.SEND_GRID_API_KEY ?? "");
 
-// Temporarily disable sending e-mails
-(sgMail as any).send = function() {
-  console.log("sgMail.send", arguments);
-};
+// Uncomment to disable sending e-mails
+// (sgMail as any).send = function() {
+//   console.log("sgMail.send", arguments);
+// };
 
 export const handler: Handler = async (event) => {
   let statusCode = 500;
@@ -28,8 +29,9 @@ export const handler: Handler = async (event) => {
     }
 
     const date = new Date().toISOString();
+    const id = crypto.randomBytes(12).toString("hex");
 
-    const hmac = sign(text + author + articleSlug + date);
+    const hmac = sign(text + author + articleSlug + date + id);
     const baseUrl = process.env.NETLIFY_DEV
       ? "http://localhost:8888"
       : "https://lou-website.netlify.com";
@@ -39,21 +41,26 @@ export const handler: Handler = async (event) => {
       author,
       articleSlug,
       date,
+      id,
       hmac,
     });
 
     const link = `${baseUrl}/.netlify/functions/verify-comment?${urlParams}`;
 
-    console.log("link", link);
+    console.log(urlParams);
+    console.log(link);
 
     const message = {
       to: "mathiassoeholm@gmail.com",
       from: "mathiassoeholm@gmail.com",
-      subject: "A new comment",
-      text: `There's a new comment, you should totally approve it! `,
+      subject: `New comment on ${articleSlug}`,
+      text: `There's a new comment on ${articleSlug}`,
       html: `
-      <strong>There's a new comment, you should totally approve it!/strong>
-      <a href="https://lou-website.netlify.com/">Approve</a>
+      <h3>Author</h3>
+      <p>${author}</p>
+      <h3>Comment</h3>
+      <p>${text}</p>
+      <a href="${link}">Click here to approve</a>
     `,
     };
 
