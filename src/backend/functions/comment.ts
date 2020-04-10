@@ -23,11 +23,13 @@ export const handler: Handler = async (event) => {
     if (!text || !author || !articleSlug) {
       statusCode = 400;
       throw new Error(
-        "One or more of the required fields 'comment, author, articleSlug' were not found in the JSON body"
+        "One or more of the required fields 'text, author, articleSlug' were not found in the JSON body"
       );
     }
 
-    const hmac = sign(text + author + articleSlug);
+    const date = new Date().toISOString();
+
+    const hmac = sign(text + author + articleSlug + date);
     const baseUrl = process.env.NETLIFY_DEV
       ? "http://localhost:8888"
       : "https://lou-website.netlify.com";
@@ -36,10 +38,11 @@ export const handler: Handler = async (event) => {
       text,
       author,
       articleSlug,
+      date,
       hmac,
     });
 
-    const link = `${baseUrl}/verify-comment?${urlParams}`;
+    const link = `${baseUrl}/.netlify/functions/verify-comment?${urlParams}`;
 
     console.log("link", link);
 

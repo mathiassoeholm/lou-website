@@ -13,5 +13,5 @@ export interface Result {
   statusCode: number;
   isBase64Encoded?: boolean;
   headers?: { [header: string]: string };
-  body?: string;
+  body: string;
 }
