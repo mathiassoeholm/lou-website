@@ -1,15 +1,15 @@
-import { Octokit } from "@octokit/rest";
 import { Handler } from "../@types/netlify-functions";
 import { verify } from "../signing";
-
-const octokit = new Octokit({
-  auth: process.env.GITHUB_ACCESS_TOKEN,
-  userAgent: "lou-website",
-});
+import { createGithubHelper } from "../github";
 
 const COMMENTS_FILE = "src/data/comments.json";
-const REPO_OWNER = "mathiassoeholm";
-const REPO_NAME = "lou-website";
+
+const githubHelper = createGithubHelper({
+  userAgent: "lou-website",
+  auth: process.env.GITHUB_ACCESS_TOKEN ?? "",
+  owner: "mathiassoeholm",
+  repo: "lou-website",
+});
 
 export const handler: Handler = async (event) => {
   let statusCode = 500;
@@ -29,7 +29,7 @@ export const handler: Handler = async (event) => {
       throw new Error("HMAC signature does not match");
     }
 
-    const comments = await getComments();
+    const comments = await githubHelper.getJsonFile(COMMENTS_FILE);
 
     const existingComment = comments?.[articleSlug]?.[hmac];
 
@@ -68,18 +68,3 @@ export const handler: Handler = async (event) => {
     };
   }
 };
-
-async function getComments() {
-  const response = await octokit.repos.getContents({
-    owner: REPO_OWNER,
-    repo: REPO_NAME,
-    path: COMMENTS_FILE,
-  });
-
-  const content = Buffer.from(
-    (response.data as any).content,
-    "base64"
-  ).toString();
-
-  return JSON.parse(content);
-}
