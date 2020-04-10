@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
-import { Handler } from "../@types/netlify-functions";
-import { verify } from "../signing";
-import { createGithubClient } from "../github";
+import { Handler } from "./@types/netlify-functions";
+import { verify } from "./utils/signing";
+import { createGithubClient } from "./utils/github";
 
 const COMMENTS_FILE = "src/data/comments.json";
 const REPO_NAME = "lou-website";

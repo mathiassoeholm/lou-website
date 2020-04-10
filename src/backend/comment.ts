@@ -1,8 +1,8 @@
 import sgMail from "@sendgrid/mail";
 import crypto from "crypto";
 import queryString from "query-string";
-import { Handler } from "../@types/netlify-functions";
-import { sign } from "../signing";
+import { Handler } from "./@types/netlify-functions";
+import { sign } from "./utils/signing";
 
 sgMail.setApiKey(process.env.SEND_GRID_API_KEY ?? "");
 
