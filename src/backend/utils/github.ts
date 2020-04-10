@@ -54,8 +54,6 @@ function createGithubClient(authToken: string, userAgent: string) {
       ],
     });
 
-    console.log("createTreeResponse", createTreeResponse);
-
     const newTreeSha = createTreeResponse.data.sha;
 
     const createCommitResponse = await restClient.git.createCommit({
@@ -65,25 +63,15 @@ function createGithubClient(authToken: string, userAgent: string) {
       tree: newTreeSha,
       parents: [parentCommitSha],
     });
-    console.log("createCommitResponse", createCommitResponse);
 
     const newCommitSha = createCommitResponse.data.sha;
 
-    console.log("params", {
+    await restClient.git.updateRef({
       owner,
       repo,
       sha: newCommitSha,
       ref: defaultBranchRef,
     });
-
-    const updateRefResponse = await restClient.git.updateRef({
-      owner,
-      repo,
-      sha: newCommitSha,
-      ref: defaultBranchRef,
-    });
-
-    console.log("updateRefResponse", updateRefResponse);
   }
 
   return { request, createCommit };

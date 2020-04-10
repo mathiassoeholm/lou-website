@@ -47,9 +47,6 @@ export const handler: Handler = async (event) => {
 
     const link = `${baseUrl}/.netlify/functions/verify-comment?${urlParams}`;
 
-    console.log(urlParams);
-    console.log(link);
-
     const message = {
       to: "mathiassoeholm@gmail.com",
       from: "mathiassoeholm@gmail.com",
@@ -65,8 +62,6 @@ export const handler: Handler = async (event) => {
     };
 
     await sgMail.send(message);
-
-    console.log("Sent email:", message);
 
     return {
       statusCode: 200,

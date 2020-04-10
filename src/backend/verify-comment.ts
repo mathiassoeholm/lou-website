@@ -65,8 +65,6 @@ export const handler: Handler = async (event) => {
       }
     );
 
-    console.log("data", data);
-
     const comments = JSON.parse(data.repository.object.text);
     const existingComment = (comments?.[articleSlug] as any[])?.find(
       (c) => c.id === id
@@ -93,8 +91,6 @@ export const handler: Handler = async (event) => {
       null,
       2
     );
-
-    console.log(updatedComments);
 
     const { defaultBranchRef } = data.repository;
 
