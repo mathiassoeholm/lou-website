@@ -56,7 +56,7 @@ export const handler: Handler = async (event) => {
       <h3>Author</h3>
       <p>${author}</p>
       <h3>Comment</h3>
-      <p>${text}</p>
+      <p style="white-space: pre-wrap">${text}</p>
       <a href="${link}">Click here to approve</a>
     `,
     };
