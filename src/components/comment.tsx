@@ -16,32 +16,32 @@ const Comment: React.FC<Props> = ({ comment }) => {
         display: flex;
         align-items: start;
 
-        p {
-          margin: 0;
-        }
-
         .triangle {
           width: 18px;
-          height: 24px;
+          height: 18px;
           fill: white;
-          margin-top: 0.75rem;
+          margin-top: 0.7rem;
+          flex-shrink: 0;
         }
       `}
     >
       <div
         css={css`
-          padding: 0.75rem;
+          padding: 0.5rem;
+          flex-shrink: 0;
         `}
       >
         <p
           css={css`
             font-size: 1.25rem;
+            margin: 0 0 0.25rem 0;
           `}
         >
           {author}
         </p>
         <p
           css={css`
+            margin: 0;
             font-size: 0.75rem;
             color: var(--secondary-info-color);
           `}
@@ -62,7 +62,7 @@ const Comment: React.FC<Props> = ({ comment }) => {
           background: white;
           padding: 0.75rem;
           border-radius: 0.75rem;
-          flex: 1;
+          margin: 0;
         `}
       >
         {text.length > 0 ? text : " "}

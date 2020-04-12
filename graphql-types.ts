@@ -5547,14 +5547,14 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___stages' |
   'pluginCreator___pluginOptions___options___emitWarning' |
   'pluginCreator___pluginOptions___options___failOnError' |
-  'pluginCreator___pluginOptions___alias___lib' |
-  'pluginCreator___pluginOptions___alias___api' |
-  'pluginCreator___pluginOptions___path' |
-  'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___pluginOptions___apiToken' |
   'pluginCreator___pluginOptions___previewMode' |
   'pluginCreator___pluginOptions___disableLiveReload' |
   'pluginCreator___pluginOptions___localeFallbacks___da' |
+  'pluginCreator___pluginOptions___alias___lib' |
+  'pluginCreator___pluginOptions___alias___api' |
+  'pluginCreator___pluginOptions___path' |
+  'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___nodeAPIs' |
   'pluginCreator___pluginFilepath' |
   'pluginCreator___packageJson___name' |
@@ -5741,14 +5741,14 @@ export type SitePluginFieldsEnum =
   'pluginOptions___stages' |
   'pluginOptions___options___emitWarning' |
   'pluginOptions___options___failOnError' |
-  'pluginOptions___alias___lib' |
-  'pluginOptions___alias___api' |
-  'pluginOptions___path' |
-  'pluginOptions___pathCheck' |
   'pluginOptions___apiToken' |
   'pluginOptions___previewMode' |
   'pluginOptions___disableLiveReload' |
   'pluginOptions___localeFallbacks___da' |
+  'pluginOptions___alias___lib' |
+  'pluginOptions___alias___api' |
+  'pluginOptions___path' |
+  'pluginOptions___pathCheck' |
   'nodeAPIs' |
   'pluginFilepath' |
   'packageJson___name' |
@@ -5862,13 +5862,13 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPluginOptions = {
   stages?: Maybe<Array<Maybe<Scalars['String']>>>;
   options?: Maybe<SitePluginPluginOptionsOptions>;
-  alias?: Maybe<SitePluginPluginOptionsAlias>;
-  path?: Maybe<Scalars['String']>;
-  pathCheck?: Maybe<Scalars['Boolean']>;
   apiToken?: Maybe<Scalars['String']>;
   previewMode?: Maybe<Scalars['Boolean']>;
   disableLiveReload?: Maybe<Scalars['Boolean']>;
   localeFallbacks?: Maybe<SitePluginPluginOptionsLocaleFallbacks>;
+  alias?: Maybe<SitePluginPluginOptionsAlias>;
+  path?: Maybe<Scalars['String']>;
+  pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
 export type SitePluginPluginOptionsAlias = {
@@ -5884,13 +5884,13 @@ export type SitePluginPluginOptionsAliasFilterInput = {
 export type SitePluginPluginOptionsFilterInput = {
   stages?: Maybe<StringQueryOperatorInput>;
   options?: Maybe<SitePluginPluginOptionsOptionsFilterInput>;
-  alias?: Maybe<SitePluginPluginOptionsAliasFilterInput>;
-  path?: Maybe<StringQueryOperatorInput>;
-  pathCheck?: Maybe<BooleanQueryOperatorInput>;
   apiToken?: Maybe<StringQueryOperatorInput>;
   previewMode?: Maybe<BooleanQueryOperatorInput>;
   disableLiveReload?: Maybe<BooleanQueryOperatorInput>;
   localeFallbacks?: Maybe<SitePluginPluginOptionsLocaleFallbacksFilterInput>;
+  alias?: Maybe<SitePluginPluginOptionsAliasFilterInput>;
+  path?: Maybe<StringQueryOperatorInput>;
+  pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsLocaleFallbacks = {

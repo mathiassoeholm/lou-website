@@ -174,9 +174,16 @@ const Article: React.FC<IProps> = (props) => {
           </p>
         </>
       )}
-      {comments.map((comment) => (
-        <Comment comment={comment} />
-      ))}
+      <div
+        css={css`
+          display: grid;
+          grid-gap: 2rem;
+        `}
+      >
+        {comments.map((comment) => (
+          <Comment comment={comment} />
+        ))}
+      </div>
     </Layout>
   );
 };
