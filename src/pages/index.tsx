@@ -1,16 +1,16 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { css } from '@emotion/core'
-import { IndexPageQuery } from '../../graphql-types'
-import Layout from '../components/layout'
-import { ArticlePreview } from '../components/article-preview'
-import { Portrait } from '../components/portrait'
-import SectionHeader from '../components/section-header'
-import { md, sm } from 'lib/css-in-js'
-import { Reference } from '../components/reference'
+import React from "react";
+import { graphql } from "gatsby";
+import { css } from "@emotion/core";
+import { IndexPageQuery } from "../../graphql-types";
+import Layout from "../components/layout";
+import { ArticlePreview } from "../components/article-preview";
+import { Portrait } from "../components/portrait";
+import SectionHeader from "../components/section-header";
+import { md, sm } from "lib/css-in-js";
+import { Reference } from "../components/reference";
 
 interface IProps {
-  data: IndexPageQuery
+  data: IndexPageQuery;
 }
 
 const Index: React.FC<IProps> = ({ data }) => {
@@ -24,23 +24,23 @@ const Index: React.FC<IProps> = ({ data }) => {
           align-items: center;
 
           grid-template-areas:
-            'portrait'
-            'welcome'
-            'references'
-            'articles';
+            "portrait"
+            "welcome"
+            "references"
+            "articles";
 
           ${md} {
             grid-template-areas:
-              'welcome portrait'
-              'references references'
-              'articles articles';
+              "welcome portrait"
+              "references references"
+              "articles articles";
           }
         `}
       >
         <article
           css={css`
             grid-area: welcome;
-            font-family: 'Open Sans';
+            font-family: "Open Sans";
             font-size: 1.3rem;
             line-height: 2;
             p {
@@ -120,10 +120,10 @@ const Index: React.FC<IProps> = ({ data }) => {
         </section>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;
 
 export const query = graphql`
   query IndexPage {
@@ -175,4 +175,4 @@ export const query = graphql`
       articlesSectionHeader
     }
   }
-`
+`;

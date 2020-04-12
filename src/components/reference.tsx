@@ -1,9 +1,9 @@
-import React from 'react'
-import { css } from '@emotion/core'
-import { DatoCmsReference } from '../../graphql-types'
+import React from "react";
+import { css } from "@emotion/core";
+import { DatoCmsReference } from "../../graphql-types";
 
 interface IProps {
-  reference: Partial<DatoCmsReference>
+  reference: Partial<DatoCmsReference>;
 }
 
 const Reference: React.FC<IProps> = ({ reference }) => {
@@ -29,7 +29,7 @@ const Reference: React.FC<IProps> = ({ reference }) => {
           font-weight: 600;
         `}
       >
-        - {reference.author},{' '}
+        - {reference.author},{" "}
         <span
           css={css`
             color: var(--accent-color);
@@ -39,7 +39,7 @@ const Reference: React.FC<IProps> = ({ reference }) => {
         </span>
       </p>
     </div>
-  )
-}
+  );
+};
 
-export { Reference }
+export { Reference };

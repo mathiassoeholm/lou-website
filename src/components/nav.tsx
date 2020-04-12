@@ -1,17 +1,17 @@
-import React, { useReducer } from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
-import { css } from '@emotion/core'
-import { sm } from 'lib/css-in-js'
-import { FaHamburger } from 'react-icons/fa'
-import { useOnClickOutside } from 'lib/hooks'
-import { NavQuery } from '../../graphql-types'
+import React, { useReducer } from "react";
+import { Link, useStaticQuery, graphql } from "gatsby";
+import { css } from "@emotion/core";
+import { sm } from "lib/css-in-js";
+import { FaHamburger } from "react-icons/fa";
+import { useOnClickOutside } from "lib/hooks";
+import { NavQuery } from "../../graphql-types";
 
 function NavLink(props: { to: string; title: string }) {
   return (
-    <Link to={props.to} activeStyle={{ color: 'var(--accent-color)' }}>
+    <Link to={props.to} activeStyle={{ color: "var(--accent-color)" }}>
       {props.title}
     </Link>
-  )
+  );
 }
 
 // TODO: Use fancy burger menu: https://codepen.io/ainalem/pen/LJYRxz
@@ -22,18 +22,18 @@ const Nav: React.FC = () => {
         menuName
       }
     }
-  `)
+  `);
 
-  const [menuOpen, toggleMenuOpen] = useReducer(s => !s, false)
+  const [menuOpen, toggleMenuOpen] = useReducer((s) => !s, false);
 
   const { clickOutsideRef } = useOnClickOutside(
     () => {
       if (menuOpen) {
-        toggleMenuOpen()
+        toggleMenuOpen();
       }
     },
     { includeSelf: true }
-  )
+  );
 
   return (
     <>
@@ -52,14 +52,14 @@ const Nav: React.FC = () => {
         `}
       />
       <nav
-        ref={r => (clickOutsideRef.current = r)}
+        ref={(r) => (clickOutsideRef.current = r)}
         css={css`
           position: absolute;
           z-index: 2;
           top: 1rem;
           right: 1rem;
           display: grid;
-          font-family: 'Open Sans';
+          font-family: "Open Sans";
           font-weight: 600;
           justify-content: end;
           justify-items: end;
@@ -69,7 +69,7 @@ const Nav: React.FC = () => {
           .menu-button {
             font-size: 2rem;
             padding: 0.25rem;
-            background: ${menuOpen ? 'white' : 'none'};
+            background: ${menuOpen ? "white" : "none"};
             cursor: pointer;
             appearance: none;
             border: none;
@@ -80,7 +80,7 @@ const Nav: React.FC = () => {
           }
 
           a {
-            visibility: ${menuOpen ? 'visible' : 'hidden'};
+            visibility: ${menuOpen ? "visible" : "hidden"};
             background: white;
             padding: 0.25rem;
           }
@@ -104,13 +104,13 @@ const Nav: React.FC = () => {
         <button className="menu-button" onClick={toggleMenuOpen}>
           <FaHamburger />
         </button>
-        <NavLink to={'/'} title={data.datoCmsHome.menuName} />
-        <NavLink to={'/blog'} title="Blog" />
-        <NavLink to={'/om-mig'} title="Om mig" />
-        <NavLink to={'/kontakt'} title="Kontakt" />
+        <NavLink to={"/"} title={data.datoCmsHome.menuName} />
+        <NavLink to={"/blog"} title="Blog" />
+        <NavLink to={"/om-mig"} title="Om mig" />
+        <NavLink to={"/kontakt"} title="Kontakt" />
       </nav>
     </>
-  )
-}
+  );
+};
 
-export { Nav }
+export { Nav };

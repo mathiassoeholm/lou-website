@@ -23,7 +23,7 @@ type CommentStatus =
 
 const MAX_COMMENT_LENGTH = 1000;
 
-const Article: React.FC<IProps> = props => {
+const Article: React.FC<IProps> = (props) => {
   const {
     slug,
     seoMetaTags,
@@ -31,19 +31,19 @@ const Article: React.FC<IProps> = props => {
     introduction,
     coverImage,
     contentNode,
-    meta
+    meta,
   } = props.data.datoCmsArticle;
 
   const comments = (commentsData[slug] ?? []) as VerifiedComment[];
 
   const [commentStatus, setCommentStatus] = useState<CommentStatus>({
-    id: "editing"
+    id: "editing",
   });
 
   const [newComment, setNewComment] = useState<NewComment>({
     author: "",
     text: "",
-    articleSlug: slug
+    articleSlug: slug,
   });
 
   const commentIsTooLong = newComment.text.length > MAX_COMMENT_LENGTH;
@@ -108,7 +108,7 @@ const Article: React.FC<IProps> = props => {
             line-height: 1.5;
           `}
           dangerouslySetInnerHTML={{
-            __html: contentNode.childMarkdownRemark.html
+            __html: contentNode.childMarkdownRemark.html,
           }}
         />
       </article>
@@ -174,7 +174,7 @@ const Article: React.FC<IProps> = props => {
           </p>
         </>
       )}
-      {comments.map(comment => (
+      {comments.map((comment) => (
         <Comment comment={comment} />
       ))}
     </Layout>

@@ -1,17 +1,17 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import 'normalize.css'
+import React from "react";
+import { Link } from "gatsby";
+import "normalize.css";
 
-import { css } from '@emotion/core'
-import { Nav } from './nav'
+import { css } from "@emotion/core";
+import { Nav } from "./nav";
 
 interface IProps {
-  title: string
-  subtitle: string
+  title: string;
+  subtitle: string;
 }
 
-const Header: React.FC<IProps> = props => {
-  const { title, subtitle } = props
+const Header: React.FC<IProps> = (props) => {
+  const { title, subtitle } = props;
 
   return (
     <header
@@ -24,7 +24,7 @@ const Header: React.FC<IProps> = props => {
       <h1
         css={css`
           margin: 0;
-          font-family: 'Dancing Script';
+          font-family: "Dancing Script";
           font-size: 2rem;
           font-weight: 400;
         `}
@@ -36,7 +36,7 @@ const Header: React.FC<IProps> = props => {
       <h2
         css={css`
           margin: 0;
-          font-family: 'Open Sans';
+          font-family: "Open Sans";
           font-size: 1rem;
           font-weight: 600;
           color: var(--accent-color);
@@ -47,7 +47,7 @@ const Header: React.FC<IProps> = props => {
       </h2>
       <Nav />
     </header>
-  )
-}
+  );
+};
 
-export { Header }
+export { Header };

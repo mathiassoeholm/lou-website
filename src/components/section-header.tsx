@@ -1,6 +1,6 @@
-import React from 'react'
-import { css } from '@emotion/core'
-import { sm } from 'lib/css-in-js'
+import React from "react";
+import { css } from "@emotion/core";
+import { sm } from "lib/css-in-js";
 
 const SectionHeader: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
   children,
@@ -10,7 +10,7 @@ const SectionHeader: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
     <h3
       css={css`
         margin: 0;
-        font-family: 'Open Sans';
+        font-family: "Open Sans";
         font-size: 1.2rem;
         border-bottom: 2px solid var(--accent-color);
         padding-bottom: 0.25rem;
@@ -24,7 +24,7 @@ const SectionHeader: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
     >
       {children}
     </h3>
-  )
-}
+  );
+};
 
-export default SectionHeader
+export default SectionHeader;

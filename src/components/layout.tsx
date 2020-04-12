@@ -1,12 +1,12 @@
-import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
-import 'normalize.css'
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
+import "normalize.css";
 
-import { LayoutQuery } from '../../graphql-types'
-import { GlobalStyle } from './global-style'
-import { css } from '@emotion/core'
-import { Header } from './header'
+import { LayoutQuery } from "../../graphql-types";
+import { GlobalStyle } from "./global-style";
+import { css } from "@emotion/core";
+import { Header } from "./header";
 
 const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery<LayoutQuery>(graphql`
@@ -23,7 +23,7 @@ const Layout: React.FC = ({ children }) => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <>
@@ -51,7 +51,7 @@ const Layout: React.FC = ({ children }) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

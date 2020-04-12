@@ -13,7 +13,8 @@
     "build:app": "gatsby build",
     "dev": "npm-run-all --parallel build:backend:watch netlifydev",
     "develop": "gatsby develop",
-    "netlifydev": "netlify dev"
+    "netlifydev": "netlify dev",
+    "format": "prettier --write src/**/*.{ts,tsx,js,json,md}"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",

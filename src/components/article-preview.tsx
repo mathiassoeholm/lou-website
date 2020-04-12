@@ -1,17 +1,17 @@
-import React from 'react'
-import { DatoCmsArticle } from '../../graphql-types'
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
-import { css } from '@emotion/core'
-import { useTruncatedText } from 'lib/hooks'
-import { prettyDate } from 'lib/utils'
+import React from "react";
+import { DatoCmsArticle } from "../../graphql-types";
+import { Link } from "gatsby";
+import Img from "gatsby-image";
+import { css } from "@emotion/core";
+import { useTruncatedText } from "lib/hooks";
+import { prettyDate } from "lib/utils";
 
 interface IProps {
-  article: Partial<DatoCmsArticle>
+  article: Partial<DatoCmsArticle>;
 }
 
 const ArticlePreview: React.FC<IProps> = ({ article }) => {
-  const truncateRef = useTruncatedText(article.introduction)
+  const truncateRef = useTruncatedText(article.introduction);
 
   return (
     <Link to={`/articles/${article.slug}`}>
@@ -52,10 +52,10 @@ const ArticlePreview: React.FC<IProps> = ({ article }) => {
               justify-self: end;
             `}
           >
-            {prettyDate(article.meta.firstPublishedAt, 'da-DK')}
+            {prettyDate(article.meta.firstPublishedAt, "da-DK")}
           </span>
           <p
-            ref={r => (truncateRef.current = r)}
+            ref={(r) => (truncateRef.current = r)}
             css={css`
               grid-column: span 2;
               margin: 0;
@@ -67,7 +67,7 @@ const ArticlePreview: React.FC<IProps> = ({ article }) => {
         </div>
       </div>
     </Link>
-  )
-}
+  );
+};
 
-export { ArticlePreview }
+export { ArticlePreview };

@@ -15,9 +15,9 @@ async function comment(newComment: NewComment) {
   const response = await fetch(`/.netlify/functions/comment`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(newComment)
+    body: JSON.stringify(newComment),
   });
 
   if (!response.ok) {

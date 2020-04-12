@@ -1,11 +1,11 @@
-import React from 'react'
-import { css } from '@emotion/core'
-import Img, { GatsbyImageProps, FixedObject } from 'gatsby-image'
+import React from "react";
+import { css } from "@emotion/core";
+import Img, { GatsbyImageProps, FixedObject } from "gatsby-image";
 
-const BORDER_RADIUS = 5
+const BORDER_RADIUS = 5;
 
-const Portrait: React.FC<GatsbyImageProps> = props => {
-  const fixedObject = props.fixed as FixedObject
+const Portrait: React.FC<GatsbyImageProps> = (props) => {
+  const fixedObject = props.fixed as FixedObject;
 
   return (
     <div
@@ -38,7 +38,7 @@ const Portrait: React.FC<GatsbyImageProps> = props => {
         `}
       />
     </div>
-  )
-}
+  );
+};
 
-export { Portrait }
+export { Portrait };

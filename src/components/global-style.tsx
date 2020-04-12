@@ -1,5 +1,5 @@
-import React from 'react'
-import { Global, css } from '@emotion/core'
+import React from "react";
+import { Global, css } from "@emotion/core";
 
 const GlobalStyle: React.FC = () => {
   return (
@@ -7,49 +7,49 @@ const GlobalStyle: React.FC = () => {
       styles={css`
         /* dancing-script-regular - latin */
         @font-face {
-          font-family: 'Dancing Script';
+          font-family: "Dancing Script";
           font-style: normal;
           font-weight: 400;
-          src: local(''),
-            url('/fonts/dancing-script-v14-latin-regular.woff2') format('woff2'),
-            url('/fonts/dancing-script-v14-latin-regular.woff') format('woff');
+          src: local(""),
+            url("/fonts/dancing-script-v14-latin-regular.woff2") format("woff2"),
+            url("/fonts/dancing-script-v14-latin-regular.woff") format("woff");
         }
 
         /* open-sans-regular - latin */
         @font-face {
-          font-family: 'Open Sans';
+          font-family: "Open Sans";
           font-style: normal;
           font-weight: 400;
-          src: local('Open Sans Regular'), local('OpenSans-Regular'),
-            url('/fonts/open-sans-v17-latin-regular.woff2') format('woff2'),
-            url('/fonts/open-sans-v17-latin-regular.woff') format('woff');
+          src: local("Open Sans Regular"), local("OpenSans-Regular"),
+            url("/fonts/open-sans-v17-latin-regular.woff2") format("woff2"),
+            url("/fonts/open-sans-v17-latin-regular.woff") format("woff");
         }
         /* open-sans-600 - latin */
         @font-face {
-          font-family: 'Open Sans';
+          font-family: "Open Sans";
           font-style: normal;
           font-weight: 600;
-          src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
-            url('/fonts/open-sans-v17-latin-600.woff2') format('woff2'),
-            url('/fonts/open-sans-v17-latin-600.woff') format('woff');
+          src: local("Open Sans SemiBold"), local("OpenSans-SemiBold"),
+            url("/fonts/open-sans-v17-latin-600.woff2") format("woff2"),
+            url("/fonts/open-sans-v17-latin-600.woff") format("woff");
         }
         /* open-sans-700 - latin */
         @font-face {
-          font-family: 'Open Sans';
+          font-family: "Open Sans";
           font-style: normal;
           font-weight: 700;
-          src: local('Open Sans Bold'), local('OpenSans-Bold'),
-            url('/fonts/open-sans-v17-latin-700.woff2') format('woff2'),
-            url('/fonts/open-sans-v17-latin-700.woff') format('woff');
+          src: local("Open Sans Bold"), local("OpenSans-Bold"),
+            url("/fonts/open-sans-v17-latin-700.woff2") format("woff2"),
+            url("/fonts/open-sans-v17-latin-700.woff") format("woff");
         }
         /* merriweather-regular - latin */
         @font-face {
-          font-family: 'Merriweather';
+          font-family: "Merriweather";
           font-style: normal;
           font-weight: 400;
-          src: local('Merriweather Regular'), local('Merriweather-Regular'),
-            url('/fonts/merriweather-v21-latin-regular.woff2') format('woff2'),
-            url('/fonts/merriweather-v21-latin-regular.woff') format('woff');
+          src: local("Merriweather Regular"), local("Merriweather-Regular"),
+            url("/fonts/merriweather-v21-latin-regular.woff2") format("woff2"),
+            url("/fonts/merriweather-v21-latin-regular.woff") format("woff");
         }
 
         *,
@@ -65,7 +65,7 @@ const GlobalStyle: React.FC = () => {
 
           background-color: var(--background-color);
           font-size: 15px;
-          font-family: 'Open Sans';
+          font-family: "Open Sans";
         }
 
         button {
@@ -78,7 +78,7 @@ const GlobalStyle: React.FC = () => {
         }
       `}
     />
-  )
-}
+  );
+};
 
-export { GlobalStyle }
+export { GlobalStyle };

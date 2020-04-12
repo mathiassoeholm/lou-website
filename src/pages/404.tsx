@@ -1,22 +1,22 @@
-import React from 'react'
-import Layout from '../components/layout'
-import { css } from '@emotion/core'
+import React from "react";
+import Layout from "../components/layout";
+import { css } from "@emotion/core";
 
 const NotFound: React.FC = () => {
   return (
     <Layout>
       <h1
         css={css`
-          font-family: 'Open Sans';
+          font-family: "Open Sans";
         `}
       >
-        Siden findes ikke{' '}
+        Siden findes ikke{" "}
         <span role="img" aria-label="forpint emoji">
           😧
         </span>
       </h1>
     </Layout>
-  )
-}
+  );
+};
 
-export default NotFound
+export default NotFound;
