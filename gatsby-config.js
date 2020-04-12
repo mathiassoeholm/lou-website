@@ -5,7 +5,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-eslint",
       options: {
-        test: /\.js$|\.jsx|\.js|\.tsx$/,
+        test: /(\.js$|\.jsx|\.ts|\.tsx)$/,
         exclude: /(node_modules|.cache|public)/,
         stages: ["develop"],
         options: {
