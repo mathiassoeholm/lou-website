@@ -13,6 +13,13 @@ module.exports = {
       // Use this to support path alias's from the root tsconfig.json
       new TsconfigPathsPlugin(),
     ];
+
+    config.module.rules[0].use[0].options.presets = [
+      ...config.module.rules[0].use[0].options.presets,
+      // Allow using the css prop from emotion
+      require.resolve("@emotion/babel-preset-css-prop"),
+    ];
+
     return config;
   },
 };
