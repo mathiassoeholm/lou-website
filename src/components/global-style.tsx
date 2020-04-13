@@ -64,6 +64,7 @@ const GlobalStyle: React.FC = () => {
           --card-color: #dcd7d3;
           --secondary-info-color: #737373;
           --call-to-action-color: #4d7882;
+          --error-color: #e00000;
 
           background-color: var(--background-color);
           font-size: 15px;

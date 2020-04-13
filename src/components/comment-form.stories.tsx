@@ -1,4 +1,5 @@
 import React from "react";
+import { action } from "@storybook/addon-actions";
 import { CommentForm } from "./comment-form";
 
 export default {
@@ -7,5 +8,5 @@ export default {
 };
 
 export const Basic = () => {
-  return <CommentForm />;
+  return <CommentForm onSubmit={action("onSubmit")} />;
 };

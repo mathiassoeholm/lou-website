@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -13,7 +13,32 @@ const SpacingRow = styled.div`
   height: 0.5rem;
 `;
 
-const CommentForm: React.FC = () => {
+interface FormValue {
+  author: string;
+  text: string;
+}
+
+interface Props {
+  onSubmit: (value: FormValue) => void;
+}
+
+const MAX_COMMENT_LENGTH = 1000;
+
+const CommentForm: React.FC<Props> = ({ onSubmit }) => {
+  const [formValue, setFormValue] = useState<FormValue>({
+    author: "",
+    text: "",
+  });
+
+  function onChangeInput(
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    const { name, value } = event.target;
+    setFormValue({ ...formValue, [name]: value });
+  }
+
+  const commentIsTooLong = formValue.text.length > MAX_COMMENT_LENGTH;
+
   return (
     <div
       css={css`
@@ -37,7 +62,7 @@ const CommentForm: React.FC = () => {
           color: white;
           font-weight: 600;
           margin: 0;
-          padding: 0.5rem;
+          padding: 0.25rem;
           position: relative;
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         `}
@@ -52,6 +77,10 @@ const CommentForm: React.FC = () => {
         <polygon points="0,0 100,0 100,100" />
       </BannerTriangle>
       <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSubmit(formValue);
+        }}
         css={css`
           background: var(--card-color);
           padding: 1rem;
@@ -67,7 +96,13 @@ const CommentForm: React.FC = () => {
         >
           Dit navn
         </label>
-        <input type="text" name="author" id="author" />
+        <input
+          type="text"
+          name="author"
+          id="author"
+          onChange={onChangeInput}
+          value={formValue.author}
+        />
         <SpacingRow />
         <div
           css={css`
@@ -84,15 +119,19 @@ const CommentForm: React.FC = () => {
           </label>
           <span
             css={css`
-              color: var(--secondary-info-color);
+              color: ${commentIsTooLong
+                ? "var(--error-color)"
+                : "var(--secondary-info-color)"};
             `}
           >
-            (0/1000)
+            ({formValue.text.length}/{MAX_COMMENT_LENGTH})
           </span>
         </div>
         <textarea
           name="text"
           id="text"
+          onChange={onChangeInput}
+          value={formValue.text}
           css={css`
             min-height: 5rem;
             resize: vertical;
@@ -100,6 +139,7 @@ const CommentForm: React.FC = () => {
         />
         <SpacingRow />
         <button
+          disabled={commentIsTooLong}
           css={css`
             margin: auto;
             background: var(--call-to-action-color);
@@ -113,6 +153,12 @@ const CommentForm: React.FC = () => {
 
             :hover {
               filter: brightness(120%);
+            }
+
+            :disabled {
+              filter: none;
+              opacity: 70%;
+              cursor: default;
             }
           `}
         >
