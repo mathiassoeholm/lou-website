@@ -8,8 +8,9 @@ import Img from "gatsby-image";
 import { css } from "@emotion/core";
 import { prettyDate } from "lib/utils";
 import * as api from "api";
-import { NewComment, VerifiedComment } from "api";
+import { VerifiedComment } from "api";
 import commentsData from "../data/comments.json";
+import { CommentForm, FormValue } from "../components/comment-form";
 
 interface IProps {
   data: ArticleQuery;
@@ -20,8 +21,6 @@ type CommentStatus =
   | { id: "error"; message: string }
   | { id: "submitting" }
   | { id: "success" };
-
-const MAX_COMMENT_LENGTH = 1000;
 
 const Article: React.FC<IProps> = (props) => {
   const {
@@ -40,27 +39,11 @@ const Article: React.FC<IProps> = (props) => {
     id: "editing",
   });
 
-  const [newComment, setNewComment] = useState<NewComment>({
-    author: "",
-    text: "",
-    articleSlug: slug,
-  });
-
-  const commentIsTooLong = newComment.text.length > MAX_COMMENT_LENGTH;
-
-  function onChangeInput(
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
-    const { name, value } = event.target;
-    setNewComment({ ...newComment, [name]: value });
-  }
-
-  async function onSubmitComment(event: React.FormEvent) {
-    event.stopPropagation();
+  async function onSubmitComment(formValue: FormValue) {
     setCommentStatus({ id: "submitting" });
 
     try {
-      await api.comment(newComment);
+      await api.comment({ ...formValue, articleSlug: slug });
       setCommentStatus({ id: "success" });
     } catch (e) {
       setCommentStatus({ id: "error", message: e.message });
@@ -70,119 +53,92 @@ const Article: React.FC<IProps> = (props) => {
   return (
     <Layout>
       <HelmetDatoCms seo={seoMetaTags} />
-      <article
-        css={css`
-          max-width: 800px;
-          margin: auto;
-        `}
-      >
-        <h2
-          css={css`
-            text-align: center;
-            font-size: 2rem;
-          `}
-        >
-          {title}
-        </h2>
-        <p
-          css={css`
-            text-align: center;
-            color: #545454;
-          `}
-        >
-          {prettyDate(meta.firstPublishedAt, "da-DK")}
-        </p>
-        <p
-          css={css`
-            font-family: "Merriweather";
-            font-size: 1.1rem;
-            line-height: 1.5;
-          `}
-        >
-          {introduction}
-        </p>
-        {coverImage && <Img fluid={coverImage.fluid} />}
-        <div
-          css={css`
-            font-family: "Merriweather";
-            line-height: 1.5;
-          `}
-          dangerouslySetInnerHTML={{
-            __html: contentNode.childMarkdownRemark.html,
-          }}
-        />
-      </article>
-      {commentStatus.id === "submitting" && <p>Sender kommentar</p>}
-      {commentStatus.id === "error" && (
-        <p>Der skete en fejl: {commentStatus.message}</p>
-      )}
-      {commentStatus.id === "editing" && (
-        <form
-          onSubmit={onSubmitComment}
-          css={css`
-            label {
-              display: block;
-            }
-          `}
-        >
-          <p>
-            <label htmlFor="author">Navn</label>
-            <input
-              type="text"
-              name="author"
-              id="author"
-              onChange={onChangeInput}
-              value={newComment.author}
-            />
-          </p>
-          <p>
-            <label htmlFor="text">
-              Kommentar{" "}
-              <span
-                css={css`
-                  color: ${commentIsTooLong ? "red" : "inherit"};
-                `}
-              >
-                ({newComment.text.length}/{MAX_COMMENT_LENGTH})
-              </span>
-            </label>
-            <textarea
-              name="text"
-              id="text"
-              onChange={onChangeInput}
-              value={newComment.text}
-            />
-          </p>
-          <p>
-            <button type="submit" disabled={commentIsTooLong}>
-              Indsend
-            </button>
-          </p>
-        </form>
-      )}
-      {commentStatus.id === "success" && (
-        <>
-          <h2>
-            Tak for din kommentar!{" "}
-            <span role="img" aria-label="et rødt hjerte">
-              ❤️
-            </span>
-          </h2>
-          <p>
-            Den skal lige godkendes inden den dukker op på siden, så jeg ved at
-            det ikke er spam.
-          </p>
-        </>
-      )}
       <div
         css={css`
           display: grid;
-          grid-gap: 2rem;
+          grid-gap: 3rem;
         `}
       >
-        {comments.map((comment) => (
-          <Comment comment={comment} />
-        ))}
+        <article
+          css={css`
+            max-width: 800px;
+            margin: auto;
+          `}
+        >
+          <h2
+            css={css`
+              text-align: center;
+              font-size: 2rem;
+            `}
+          >
+            {title}
+          </h2>
+          <p
+            css={css`
+              text-align: center;
+              color: #545454;
+            `}
+          >
+            {prettyDate(meta.firstPublishedAt, "da-DK")}
+          </p>
+          <p
+            css={css`
+              font-family: "Merriweather";
+              font-size: 1.1rem;
+              line-height: 1.5;
+            `}
+          >
+            {introduction}
+          </p>
+          {coverImage && <Img fluid={coverImage.fluid} />}
+          <div
+            css={css`
+              font-family: "Merriweather";
+              line-height: 1.5;
+            `}
+            dangerouslySetInnerHTML={{
+              __html: contentNode.childMarkdownRemark.html,
+            }}
+          />
+        </article>
+        {commentStatus.id === "submitting" && <p>Sender kommentar</p>}
+        {commentStatus.id === "error" && (
+          <p>Der skete en fejl: {commentStatus.message}</p>
+        )}
+        {commentStatus.id === "editing" && (
+          <div
+            css={css`
+              padding: 0 2rem;
+            `}
+          >
+            <CommentForm onSubmit={onSubmitComment} />
+          </div>
+        )}
+        {commentStatus.id === "success" && (
+          <>
+            <h2>
+              Tak for din kommentar!{" "}
+              <span role="img" aria-label="et rødt hjerte">
+                ❤️
+              </span>
+            </h2>
+            <p>
+              Den skal lige godkendes inden den dukker op på siden, så jeg ved
+              at det ikke er spam.
+            </p>
+          </>
+        )}
+        <div
+          css={css`
+            display: grid;
+            grid-gap: 2rem;
+            padding: 0 3rem;
+          `}
+        >
+          {comments.map((comment) => (
+            <Comment comment={comment} />
+          ))}
+        </div>
       </div>
     </Layout>
   );

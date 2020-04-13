@@ -176,4 +176,4 @@ const CommentForm: React.FC<Props> = ({ onSubmit }) => {
   );
 };
 
-export { CommentForm };
+export { CommentForm, FormValue };
