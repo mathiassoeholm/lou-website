@@ -13070,6 +13070,11 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
+react-truncated-text@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-truncated-text/-/react-truncated-text-0.1.2.tgz#949e7634ef58f73b3d60c9ced0fd9240ac077d59"
+  integrity sha512-g+IsSBchniuCnUSN9Q0gudHrIVOLr3/lSuE9HA414K1Mh6FSD90jBQgbHbv9mLXnPPl3VyyZWtDzKJQFa56SwA==
+
 react@^16.13.0, react@^16.8.0:
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"

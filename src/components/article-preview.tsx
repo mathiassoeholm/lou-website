@@ -1,9 +1,9 @@
 import React from "react";
+import { TruncatedText } from "react-truncated-text";
 import { DatoCmsArticle } from "../../graphql-types";
 import { Link } from "gatsby";
 import Img from "gatsby-image";
 import { css } from "@emotion/core";
-import { useTruncatedText } from "lib/hooks";
 import { prettyDate } from "lib/utils";
 
 interface IProps {
@@ -11,8 +11,6 @@ interface IProps {
 }
 
 const ArticlePreview: React.FC<IProps> = ({ article }) => {
-  const truncateRef = useTruncatedText(article.introduction);
-
   return (
     <Link to={`/articles/${article.slug}`}>
       <div
@@ -54,8 +52,7 @@ const ArticlePreview: React.FC<IProps> = ({ article }) => {
           >
             {prettyDate(article.meta.firstPublishedAt, "da-DK")}
           </span>
-          <p
-            ref={(r) => (truncateRef.current = r)}
+          <TruncatedText
             css={css`
               grid-column: span 2;
               margin: 0;
@@ -63,7 +60,9 @@ const ArticlePreview: React.FC<IProps> = ({ article }) => {
               overflow: hidden;
               line-height: 1.6;
             `}
-          />
+          >
+            {article.introduction}
+          </TruncatedText>
         </div>
       </div>
     </Link>
