@@ -2,6 +2,7 @@ import React from "react";
 import { VerifiedComment } from "api";
 import { css } from "@emotion/core";
 import { prettyDate } from "lib/utils";
+import { sm } from "lib/css-in-js";
 
 interface Props {
   comment: VerifiedComment;
@@ -15,6 +16,11 @@ const Comment: React.FC<Props> = ({ comment }) => {
       css={css`
         display: flex;
         align-items: start;
+        flex-direction: column;
+
+        ${sm} {
+          flex-direction: row;
+        }
 
         .triangle {
           width: 18px;
@@ -22,6 +28,11 @@ const Comment: React.FC<Props> = ({ comment }) => {
           fill: white;
           margin-top: 0.7rem;
           flex-shrink: 0;
+          display: none;
+
+          ${sm} {
+            display: block;
+          }
         }
       `}
     >

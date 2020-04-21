@@ -136,7 +136,7 @@ const Article: React.FC<IProps> = (props) => {
           `}
         >
           {comments.map((comment) => (
-            <Comment comment={comment} />
+            <Comment key={comment.id} comment={comment} />
           ))}
         </div>
       </div>
