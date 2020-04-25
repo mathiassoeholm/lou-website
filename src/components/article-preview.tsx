@@ -16,8 +16,7 @@ const ArticlePreview: React.FC<IProps> = ({ article }) => {
       <div
         css={css`
           display: grid;
-          grid-template-rows: 1fr 48%;
-          height: 260px;
+          grid-template-rows: 150px auto;
           max-width: 400px;
           background: var(--card-color);
           grid-row-gap: 0.5rem;
@@ -27,7 +26,6 @@ const ArticlePreview: React.FC<IProps> = ({ article }) => {
         <div
           css={css`
             display: grid;
-            max-height: 100%;
             grid-template-columns: minmax(0, 1fr) auto;
             grid-template-rows: auto 1fr;
             grid-gap: 0.5rem;
@@ -56,7 +54,7 @@ const ArticlePreview: React.FC<IProps> = ({ article }) => {
             css={css`
               grid-column: span 2;
               margin: 0;
-              max-height: 100%;
+              height: calc(1em * 3 * 1.6);
               overflow: hidden;
               line-height: 1.6;
             `}

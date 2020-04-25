@@ -35,6 +35,8 @@ const Portrait: React.FC<GatsbyImageProps> = (props) => {
           object-fit: cover;
           position: relative;
           transform: translate(-0.5rem, -0.5rem);
+          /* Fix horizontal line issue: https://gist.github.com/ayamflow/b602ab436ac9f05660d9c15190f4fd7b */
+          -webkit-mask-image: -webkit-radial-gradient(white, black);
         `}
       />
     </div>
