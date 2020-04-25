@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../components/layout";
+import { Layout } from "components";
 import { css } from "@emotion/core";
 
 const NotFound: React.FC = () => {

@@ -4695,6 +4695,7 @@ export type QueryAllSitePageArgs = {
 
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
+  siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
@@ -5044,6 +5045,7 @@ export type QueryAllSitePluginArgs = {
 
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
+  siteMetadata?: Maybe<SiteSiteMetadata>;
   port?: Maybe<Scalars['Int']>;
   host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
@@ -5245,6 +5247,7 @@ export type SiteEdge = {
 
 export type SiteFieldsEnum = 
   'buildTime' |
+  'siteMetadata___siteUrl' |
   'port' |
   'host' |
   'polyfill' |
@@ -5338,6 +5341,7 @@ export type SiteFieldsEnum =
 
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
+  siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
@@ -5553,6 +5557,7 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___localeFallbacks___da' |
   'pluginCreator___pluginOptions___alias___lib' |
   'pluginCreator___pluginOptions___alias___api' |
+  'pluginCreator___pluginOptions___alias___components' |
   'pluginCreator___pluginOptions___path' |
   'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___nodeAPIs' |
@@ -5747,6 +5752,7 @@ export type SitePluginFieldsEnum =
   'pluginOptions___localeFallbacks___da' |
   'pluginOptions___alias___lib' |
   'pluginOptions___alias___api' |
+  'pluginOptions___alias___components' |
   'pluginOptions___path' |
   'pluginOptions___pathCheck' |
   'nodeAPIs' |
@@ -5874,11 +5880,13 @@ export type SitePluginPluginOptions = {
 export type SitePluginPluginOptionsAlias = {
   lib?: Maybe<Scalars['String']>;
   api?: Maybe<Scalars['String']>;
+  components?: Maybe<Scalars['String']>;
 };
 
 export type SitePluginPluginOptionsAliasFilterInput = {
   lib?: Maybe<StringQueryOperatorInput>;
   api?: Maybe<StringQueryOperatorInput>;
+  components?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {
@@ -5914,6 +5922,14 @@ export type SitePluginPluginOptionsOptionsFilterInput = {
 export type SitePluginSortInput = {
   fields?: Maybe<Array<Maybe<SitePluginFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export type SiteSiteMetadata = {
+  siteUrl?: Maybe<Scalars['String']>;
+};
+
+export type SiteSiteMetadataFilterInput = {
+  siteUrl?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {
@@ -5967,6 +5983,11 @@ export type ArticleQuery = { datoCmsArticle?: Maybe<(
     Pick<DatoCmsArticle, 'slug' | 'title' | 'introduction'>
     & { seoMetaTags?: Maybe<GatsbyDatoCmsSeoMetaTagsFragment>, contentNode?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }>, coverImage?: Maybe<{ fluid?: Maybe<GatsbyDatoCmsFluidFragment> }>, meta?: Maybe<Pick<DatoCmsMetaField, 'firstPublishedAt'>> }
   )> };
+
+export type SiteMetadataQueryVariables = {};
+
+
+export type SiteMetadataQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
 
 export type GatsbyDatoCmsResolutionsFragment = Pick<DatoCmsFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

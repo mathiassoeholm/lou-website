@@ -2,15 +2,20 @@ import React, { useState } from "react";
 import { graphql } from "gatsby";
 import { ArticleQuery } from "../../graphql-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import Layout from "../components/layout";
-import { Comment } from "../components/comment";
 import Img from "gatsby-image";
 import { css } from "@emotion/core";
 import { prettyDate } from "lib/utils";
 import * as api from "api";
 import { VerifiedComment } from "api";
 import commentsData from "../data/comments.json";
-import { CommentForm, FormValue } from "../components/comment-form";
+import {
+  ShareSection,
+  FormValue,
+  CommentForm,
+  Comment,
+  Layout,
+} from "components";
+import { useSiteMetadata } from "../use-site-metadata";
 
 interface IProps {
   data: ArticleQuery;
@@ -33,8 +38,10 @@ const Article: React.FC<IProps> = (props) => {
     meta,
   } = props.data.datoCmsArticle;
 
-  const comments = (commentsData[slug] ?? []) as VerifiedComment[];
+  const { siteUrl } = useSiteMetadata();
+  const articleUrl = `${siteUrl}/${slug}`;
 
+  const comments = (commentsData[slug] ?? []) as VerifiedComment[];
   const [commentStatus, setCommentStatus] = useState<CommentStatus>({
     id: "editing",
   });
@@ -101,6 +108,7 @@ const Article: React.FC<IProps> = (props) => {
             }}
           />
         </article>
+        <ShareSection articleTitle={title} articleUrl={articleUrl} />
         {commentStatus.id === "submitting" && <p>Sender kommentar</p>}
         {commentStatus.id === "error" && (
           <p>Der skete en fejl: {commentStatus.message}</p>

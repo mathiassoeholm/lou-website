@@ -2,12 +2,14 @@ import React from "react";
 import { graphql } from "gatsby";
 import { css } from "@emotion/core";
 import { IndexPageQuery } from "../../graphql-types";
-import Layout from "../components/layout";
-import { ArticlePreview } from "../components/article-preview";
-import { Portrait } from "../components/portrait";
-import SectionHeader from "../components/section-header";
+import {
+  Layout,
+  ArticlePreview,
+  Portrait,
+  SectionHeader,
+  Reference,
+} from "components";
 import { md, sm } from "lib/css-in-js";
-import { Reference } from "../components/reference";
 
 interface IProps {
   data: IndexPageQuery;

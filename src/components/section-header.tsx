@@ -27,4 +27,4 @@ const SectionHeader: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
   );
 };
 
-export default SectionHeader;
+export { SectionHeader };

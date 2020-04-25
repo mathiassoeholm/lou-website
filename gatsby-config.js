@@ -1,6 +1,9 @@
 require("dotenv").config();
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: "https://lou-website.netlify.app",
+  },
   plugins: [
     {
       resolve: "gatsby-plugin-eslint",
@@ -34,6 +37,7 @@ module.exports = {
         alias: {
           lib: "src/lib",
           api: "src/api",
+          components: "src/components",
         },
       },
     },
