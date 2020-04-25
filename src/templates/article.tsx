@@ -108,7 +108,9 @@ const Article: React.FC<IProps> = (props) => {
         {commentStatus.id === "editing" && (
           <div
             css={css`
-              padding: 0 2rem;
+              width: 100%;
+              max-width: 45rem;
+              justify-self: center;
             `}
           >
             <CommentForm onSubmit={onSubmitComment} />
@@ -132,7 +134,10 @@ const Article: React.FC<IProps> = (props) => {
           css={css`
             display: grid;
             grid-gap: 2rem;
-            padding: 0 3rem;
+            width: 100%;
+            max-width: 45rem;
+            justify-self: center;
+            padding: 0 1rem;
           `}
         >
           {comments.map((comment) => (

@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import { css } from "@emotion/core";
 import { sm } from "lib/css-in-js";
-import { FaHamburger } from "react-icons/fa";
+import { MdMenu } from "react-icons/md";
 import { useOnClickOutside } from "lib/hooks";
 import { NavQuery } from "../../graphql-types";
 
@@ -102,7 +102,7 @@ const Nav: React.FC = () => {
         `}
       >
         <button className="menu-button" onClick={toggleMenuOpen}>
-          <FaHamburger />
+          <MdMenu />
         </button>
         <NavLink to={"/"} title={data.datoCmsHome.menuName} />
         <NavLink to={"/blog"} title="Blog" />
