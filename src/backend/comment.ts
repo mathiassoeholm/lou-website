@@ -34,7 +34,7 @@ export const handler: Handler = async (event) => {
     const hmac = sign(text + author + articleSlug + date + id);
     const baseUrl = process.env.NETLIFY_DEV
       ? "http://localhost:8888"
-      : "https://lou-website.netlify.com";
+      : "https://lou-website.netlify.app";
 
     const urlParams = queryString.stringify({
       text,
