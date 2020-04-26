@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
+import { FormInput, FormTextArea } from "./form-input";
+import { CallToActionButton } from "./call-to-action-button";
 
 const BannerTriangle = styled.svg`
   fill: var(--accent-color);
@@ -44,14 +46,6 @@ const CommentForm: React.FC<Props> = ({ onSubmit }) => {
       css={css`
         display: grid;
         grid-template-columns: auto 1fr auto;
-
-        input,
-        textarea {
-          width: 100%;
-          border: none;
-          border-radius: 0.5rem;
-          padding: 0.5rem;
-        }
       `}
     >
       <h2
@@ -88,88 +82,29 @@ const CommentForm: React.FC<Props> = ({ onSubmit }) => {
           grid-gap: 0.5rem;
         `}
       >
-        <label
-          htmlFor="author"
-          css={css`
-            display: block;
-          `}
-        >
-          Dit navn
-        </label>
-        <input
-          type="text"
-          name="author"
+        <FormInput
           id="author"
+          name="author"
+          label="Dit navn"
+          type="text"
           onChange={onChangeInput}
           value={formValue.author}
         />
         <SpacingRow />
-        <div
-          css={css`
-            display: flex;
-          `}
-        >
-          <label
-            htmlFor="text"
-            css={css`
-              flex: 1;
-            `}
-          >
-            Kommentar
-          </label>
-          <span
-            css={css`
-              color: ${commentIsTooLong
-                ? "var(--error-color)"
-                : "var(--secondary-info-color)"};
-            `}
-          >
-            ({formValue.text.length}/{MAX_COMMENT_LENGTH})
-          </span>
-        </div>
-        <textarea
+        <FormTextArea
           name="text"
           id="text"
+          label="Kommentar"
+          maxLength={MAX_COMMENT_LENGTH}
           onChange={onChangeInput}
           value={formValue.text}
-          css={css`
-            min-height: 5rem;
-            resize: vertical;
-          `}
         />
         <SpacingRow />
-        <button
-          disabled={commentIsTooLong}
-          css={css`
-            margin: auto;
-            background: var(--call-to-action-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            appearance: none;
-            border: none;
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-            transition: ease-in-out 200ms;
-
-            :hover {
-              filter: brightness(120%);
-            }
-
-            :disabled {
-              filter: none;
-              opacity: 70%;
-              cursor: default;
-            }
-          `}
-        >
+        <CallToActionButton disabled={commentIsTooLong}>
           Indsend
-        </button>
+        </CallToActionButton>
       </form>
-      <BannerTriangle
-        css={css``}
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-      >
+      <BannerTriangle viewBox="0 0 100 100" preserveAspectRatio="none">
         <polygon points="0,0 100,0 0,100" />
       </BannerTriangle>
     </div>

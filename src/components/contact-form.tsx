@@ -1,31 +1,55 @@
 import React from "react";
 import { useForm, OnSubmit } from "react-hook-form";
-
-type Inputs = {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-};
+import { ContactSubmission } from "api";
+import { FormInput, FormTextArea } from "./form-input";
+import { CallToActionButton } from "./call-to-action-button";
+import { css } from "@emotion/core";
 
 interface IProps {
-  onSubmit: OnSubmit<Inputs>;
+  onSubmit: OnSubmit<ContactSubmission>;
 }
 
 const ContactForm: React.FC<IProps> = (props) => {
-  const { register, handleSubmit, errors } = useForm<Inputs>();
+  const { register, handleSubmit } = useForm<ContactSubmission>();
 
   return (
-    <form onSubmit={handleSubmit(props.onSubmit)}>
-      <label>Navn</label>
-      <input name="name" defaultValue="test" ref={register} />
-      <label>Email</label>
-      <input name="email" ref={register({ required: true })} />
-      <label>Emne</label>
-      <input name="subject" ref={register} />
-      <label>Besked</label>
-      <input name="message" ref={register} />
-      <input type="submit" />
+    <form
+      onSubmit={handleSubmit(props.onSubmit)}
+      css={css`
+        display: grid;
+        grid-gap: 1rem;
+        max-width: 40rem;
+        width: 100%;
+      `}
+    >
+      <FormInput
+        id="name"
+        label="Navn"
+        name="name"
+        ref={register({ required: true })}
+      />
+      <FormInput
+        id="email"
+        label="Email"
+        name="email"
+        ref={register({ required: true })}
+      />
+      <FormInput
+        id="subject"
+        label="Emne"
+        name="subject"
+        ref={register({ required: true })}
+      />
+      <FormTextArea
+        id="message"
+        label="Besked"
+        name="message"
+        ref={register({ required: true })}
+        css={css`
+          min-height: 15rem;
+        `}
+      />
+      <CallToActionButton>Indsend</CallToActionButton>
     </form>
   );
 };
