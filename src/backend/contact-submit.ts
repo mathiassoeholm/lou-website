@@ -27,11 +27,11 @@ export const handler: Handler = async (event) => {
       <p>There's a new form submission on lou-website</p>
       <h3>Name</h3>
       <p>${name}</p>
-      <h3>email</h3>
+      <h3>Email</h3>
       <p>${email}</p>
-      <h3>subject</h3>
+      <h3>Subject</h3>
       <p>${subject}</p>
-      <h3>message</h3>
+      <h3>Message</h3>
       <p style="white-space: pre-wrap">${message}</p>
     `,
     });
