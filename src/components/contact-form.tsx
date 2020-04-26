@@ -10,7 +10,17 @@ interface IProps {
 }
 
 const ContactForm: React.FC<IProps> = (props) => {
-  const { register, handleSubmit } = useForm<ContactSubmission>();
+  const { register, handleSubmit, formState } = useForm<ContactSubmission>({
+    mode: "onChange",
+  });
+
+  if (formState.isSubmitting) {
+    return <p>Sender beskeden</p>;
+  }
+
+  if (formState.isSubmitted) {
+    return <p>Tak for din besked!</p>;
+  }
 
   return (
     <form
@@ -27,29 +37,39 @@ const ContactForm: React.FC<IProps> = (props) => {
         label="Navn"
         name="name"
         ref={register({ required: true })}
+        required
       />
       <FormInput
         id="email"
         label="Email"
         name="email"
         ref={register({ required: true })}
+        required
+        type="email"
       />
       <FormInput
         id="subject"
         label="Emne"
         name="subject"
         ref={register({ required: true })}
+        required
       />
       <FormTextArea
         id="message"
         label="Besked"
         name="message"
         ref={register({ required: true })}
+        required
         css={css`
           min-height: 15rem;
         `}
       />
-      <CallToActionButton>Indsend</CallToActionButton>
+      <CallToActionButton
+        type="submit"
+        disabled={!formState.isValid || formState.isSubmitting}
+      >
+        Indsend
+      </CallToActionButton>
     </form>
   );
 };
