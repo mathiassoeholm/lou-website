@@ -1,6 +1,12 @@
 import React from "react";
-import { FacebookShareButton, TwitterShareButton } from "react-share";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  FacebookIcon,
+  TwitterIcon,
+} from "react-share";
 import { css } from "@emotion/core";
+import { sm } from "lib/css-in-js";
 
 interface IProps {
   articleTitle: string;
@@ -41,16 +47,38 @@ const ShareSection: React.FC<IProps> = (props) => {
           padding-left: 1rem;
           display: grid;
           grid-auto-flow: column;
-          grid-gap: 1.25rem;
           font-weight: 600;
           font-size: 1.15rem;
+
+          grid-gap: 0.5rem;
+          ${sm} {
+            grid-gap: 1.25rem;
+          }
+
+          button > span {
+            display: none;
+
+            ${sm} {
+              display: inline;
+            }
+          }
+
+          button > svg {
+            display: inline;
+
+            ${sm} {
+              display: none;
+            }
+          }
         `}
       >
         <FacebookShareButton url={props.articleUrl} quote={props.articleTitle}>
-          Facebook
+          <span>Facebook</span>
+          <FacebookIcon size={28} />
         </FacebookShareButton>
         <TwitterShareButton url={props.articleUrl} title={props.articleTitle}>
-          Twitter
+          <span>Twitter</span>
+          <TwitterIcon size={28} />
         </TwitterShareButton>
       </div>
     </div>
