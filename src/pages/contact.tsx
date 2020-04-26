@@ -4,7 +4,7 @@ import { Layout, ContactForm } from "components";
 const Contact: React.FC = () => {
   return (
     <Layout>
-      <ContactForm />
+      <ContactForm onSubmit={() => null} />
     </Layout>
   );
 };

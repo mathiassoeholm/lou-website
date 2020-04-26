@@ -1,15 +1,8 @@
-import sgMail from "@sendgrid/mail";
 import crypto from "crypto";
 import queryString from "query-string";
 import { Handler } from "./@types/netlify-functions";
 import { sign } from "./utils/signing";
-
-sgMail.setApiKey(process.env.SEND_GRID_API_KEY ?? "");
-
-// Uncomment to disable sending e-mails
-// (sgMail as any).send = function() {
-//   console.log("sgMail.send", arguments);
-// };
+import { sendEmail } from "./utils/email";
 
 export const handler: Handler = async (event) => {
   let statusCode = 500;
@@ -47,9 +40,9 @@ export const handler: Handler = async (event) => {
 
     const link = `${baseUrl}/.netlify/functions/verify-comment?${urlParams}`;
 
-    const message = {
-      to: "mathiassoeholm@gmail.com",
-      from: "mathiassoeholm@gmail.com",
+    await sendEmail({
+      to: process.env.LOUISE_EMAIL ?? "",
+      from: process.env.MATHIAS_EMAIL ?? "",
       subject: `New comment on ${articleSlug}`,
       text: `There's a new comment on ${articleSlug}`,
       html: `
@@ -59,9 +52,7 @@ export const handler: Handler = async (event) => {
       <p style="white-space: pre-wrap">${text}</p>
       <a href="${link}">Click here to approve</a>
     `,
-    };
-
-    await sgMail.send(message);
+    });
 
     return {
       statusCode: 200,
