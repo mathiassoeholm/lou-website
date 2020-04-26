@@ -106,8 +106,8 @@ const Nav: React.FC = () => {
         </button>
         <NavLink to={"/"} title={data.datoCmsHome.menuName} />
         <NavLink to={"/blog"} title="Blog" />
-        <NavLink to={"/om-mig"} title="Om mig" />
-        <NavLink to={"/kontakt"} title="Kontakt" />
+        <NavLink to={"/about"} title="Om mig" />
+        <NavLink to={"/contact"} title="Kontakt" />
       </nav>
     </>
   );

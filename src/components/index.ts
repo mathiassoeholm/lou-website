@@ -1,6 +1,7 @@
 export * from "./article-preview";
 export * from "./comment-form";
 export * from "./comment";
+export * from "./contact-form";
 export * from "./global-style";
 export * from "./header";
 export * from "./layout";
