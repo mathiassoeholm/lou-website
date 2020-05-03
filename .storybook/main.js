@@ -22,6 +22,9 @@ module.exports = {
       require.resolve("@emotion/babel-preset-css-prop"),
     ];
 
+    // Transpile Gatsby module because Gatsby includes un-transpiled ES6 code.
+    config.module.rules[0].exclude = [/node_modules\/(?!(gatsby)\/)/];
+
     return config;
   },
 };
