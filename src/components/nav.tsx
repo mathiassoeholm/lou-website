@@ -59,7 +59,6 @@ const Nav: React.FC = () => {
           top: 1rem;
           right: 1rem;
           display: grid;
-          font-family: "Open Sans";
           font-weight: 600;
           justify-content: end;
           justify-items: end;

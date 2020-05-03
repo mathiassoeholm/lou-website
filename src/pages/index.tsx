@@ -42,7 +42,6 @@ const Index: React.FC<IProps> = ({ data }) => {
         <article
           css={css`
             grid-area: welcome;
-            font-family: "Open Sans";
             font-size: 1.3rem;
             line-height: 2;
             p {

@@ -24,6 +24,7 @@ const GlobalStyle: React.FC = () => {
             url("/fonts/open-sans-v17-latin-regular.woff2") format("woff2"),
             url("/fonts/open-sans-v17-latin-regular.woff") format("woff");
         }
+
         /* open-sans-600 - latin */
         @font-face {
           font-family: "Open Sans";
@@ -33,6 +34,7 @@ const GlobalStyle: React.FC = () => {
             url("/fonts/open-sans-v17-latin-600.woff2") format("woff2"),
             url("/fonts/open-sans-v17-latin-600.woff") format("woff");
         }
+
         /* open-sans-700 - latin */
         @font-face {
           font-family: "Open Sans";
@@ -41,15 +43,6 @@ const GlobalStyle: React.FC = () => {
           src: local("Open Sans Bold"), local("OpenSans-Bold"),
             url("/fonts/open-sans-v17-latin-700.woff2") format("woff2"),
             url("/fonts/open-sans-v17-latin-700.woff") format("woff");
-        }
-        /* merriweather-regular - latin */
-        @font-face {
-          font-family: "Merriweather";
-          font-style: normal;
-          font-weight: 400;
-          src: local("Merriweather Regular"), local("Merriweather-Regular"),
-            url("/fonts/merriweather-v21-latin-regular.woff2") format("woff2"),
-            url("/fonts/merriweather-v21-latin-regular.woff") format("woff");
         }
 
         *,
@@ -69,6 +62,12 @@ const GlobalStyle: React.FC = () => {
           background-color: var(--background-color);
           font-size: 15px;
           font-family: "Open Sans";
+
+          /* 
+           * Avoid jumping when centering horizontally by forcing a scrollbar
+           * Idea came from: https://css-tricks.com/eliminate-jumps-in-horizontal-centering-by-forcing-a-scroll-bar/ 
+           */
+          overflow-y: scroll;
         }
 
         button {

@@ -90,7 +90,6 @@ const Article: React.FC<IProps> = (props) => {
           </p>
           <p
             css={css`
-              font-family: "Merriweather";
               font-size: 1.1rem;
               line-height: 1.5;
             `}
@@ -100,7 +99,6 @@ const Article: React.FC<IProps> = (props) => {
           {coverImage && <Img fluid={coverImage.fluid} />}
           <div
             css={css`
-              font-family: "Merriweather";
               line-height: 1.5;
             `}
             dangerouslySetInnerHTML={{

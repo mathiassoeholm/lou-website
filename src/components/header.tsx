@@ -36,7 +36,6 @@ const Header: React.FC<IProps> = (props) => {
       <h2
         css={css`
           margin: 0;
-          font-family: "Open Sans";
           font-size: 1rem;
           font-weight: 600;
           color: var(--accent-color);
