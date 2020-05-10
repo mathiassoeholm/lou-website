@@ -1,8 +1,10 @@
 import React from "react";
 import { ArticlePreview } from "./article-preview";
+import { text, withKnobs } from "@storybook/addon-knobs";
 
 export default {
   title: "ArticlePreview",
+  decorators: [withKnobs],
 };
 
 const coverImage = {
@@ -18,12 +20,32 @@ const coverImage = {
   },
 };
 
-export const Basic = () => {
+export const Small = () => {
   return (
     <ArticlePreview
       article={{
-        title: "Test Article",
-        introduction: "intro ".repeat(20),
+        title: text("title", "Test article"),
+        introduction: "intro ".repeat(100),
+        slug: "test-article",
+        coverImage,
+        meta: {
+          firstPublishedAt: "2020-03-29T09:32:16.433+01:00",
+        },
+      }}
+    />
+  );
+};
+
+export const Large = () => {
+  return (
+    <ArticlePreview
+      large
+      article={{
+        title: text(
+          "title",
+          "Test article with a very very very very very very long naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaame"
+        ),
+        introduction: "intro ".repeat(100),
         slug: "test-article",
         coverImage,
         meta: {
