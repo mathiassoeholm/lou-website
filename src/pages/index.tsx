@@ -157,7 +157,6 @@ export const query = graphql`
       }
     }
     datoCmsHome {
-      menuName
       portrait {
         fixed(
           width: 200
