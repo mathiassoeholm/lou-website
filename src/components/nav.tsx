@@ -8,7 +8,11 @@ import { NavQuery } from "../../graphql-types";
 
 function NavLink(props: { to: string; title: string }) {
   return (
-    <Link to={props.to} activeStyle={{ color: "var(--accent-color)" }}>
+    <Link
+      data-testid={`nav-link-to-${props.to}`}
+      to={props.to}
+      activeStyle={{ color: "var(--accent-color)" }}
+    >
       {props.title}
     </Link>
   );

@@ -10,10 +10,12 @@ interface Email {
   html: string;
 }
 
-// Uncomment to disable sending e-mails
-// (sgMail as any).send = function () {
-//   console.log("sgMail.send", arguments);
-// };
+// Override send function when running in Netlify Dev
+if (process.env.NETLIFY_DEV === "true") {
+  (sgMail as any).send = function () {
+    console.log("sgMail.send", arguments);
+  };
+}
 
 export function sendEmail(email: Email) {
   return sgMail.send(email);

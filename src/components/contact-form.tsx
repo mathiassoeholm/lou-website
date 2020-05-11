@@ -15,11 +15,11 @@ const ContactForm: React.FC<IProps> = (props) => {
   });
 
   if (formState.isSubmitting) {
-    return <p>Sender beskeden</p>;
+    return <p data-testid="sending-text">Sender beskeden</p>;
   }
 
   if (formState.isSubmitted) {
-    return <p>Tak for din besked!</p>;
+    return <p data-testid="thank-you-text">Tak for din besked!</p>;
   }
 
   return (
