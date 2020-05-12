@@ -3,7 +3,9 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-16.04
-    container: cypress/browsers:node13.6.0-chrome80-ff72
+    container:
+      image: cypress/browsers:node13.6.0-chrome80-ff72
+      options: --privileged
     steps:
       - name: Checkout
         uses: actions/checkout@v2
