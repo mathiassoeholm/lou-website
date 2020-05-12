@@ -3,21 +3,18 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-16.04
-    container:
-      image: cypress/browsers:node13.6.0-chrome80-ff72
-      options: --privileged
+    container: cypress/browsers:node13.6.0-chrome80-ff72
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Build backend
+        run: yarn build:backend
       - name: Install Netlify
         run: yarn global add netlify-cli
-      # https://github.com/gatsbyjs/gatsby/issues/11406
-      - name: Increase maximum file watchers
-        run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
       - name: Cypress run
         uses: cypress-io/github-action@v1.24.1
         with:
-          start: yarn dev
+          start: netlify dev
           browser: chrome
           wait-on: "http://localhost:8888"
           wait-on-timeout: 120
