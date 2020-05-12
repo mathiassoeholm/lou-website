@@ -3,12 +3,16 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-16.04
+    container: cypress/browsers:node13.6.0-chrome80-ff72
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
+      - name: Install Netlify
+        run: yarn global add netlify-cli
       - name: Cypress run
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v1.24.1
         with:
           start: yarn dev
+          browser: chrome
+          wait-on: "http://localhost:8888"
+          wait-on-timeout: 120
