@@ -9,6 +9,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Install Netlify
         run: yarn global add netlify-cli
+      # https://github.com/gatsbyjs/gatsby/issues/11406
+      - name: Increase maximum file watchers
+        run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
       - name: Cypress run
         uses: cypress-io/github-action@v1.24.1
         with:
