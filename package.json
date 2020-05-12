@@ -19,8 +19,8 @@
     "build-storybook": "build-storybook -s ./static",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "test:e2e": "start-server-and-test dev http://localhost:8888 cy:open",
-    "test:e2e:ci": "start-server-and-test dev http://localhost:8888 cy:run"
+    "test:e2e:open": "start-server-and-test dev http://localhost:8888 cy:open",
+    "test:e2e:run": "start-server-and-test dev http://localhost:8888 cy:run"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
