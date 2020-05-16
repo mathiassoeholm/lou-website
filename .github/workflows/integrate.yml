@@ -7,12 +7,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install Netlify
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build:backend
+      - name: Install netlify-cli
         run: yarn global add netlify-cli
       - name: Cypress run
         uses: cypress-io/github-action@v1.24.1
         with:
-          start: yarn build:backend && netlify dev
+          start: netlify dev
           browser: chrome
           wait-on: "http://localhost:8888"
           wait-on-timeout: 120
