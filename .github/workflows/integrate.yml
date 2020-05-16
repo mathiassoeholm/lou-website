@@ -13,6 +13,8 @@ jobs:
         run: yarn build:backend
       - name: Install netlify-cli
         run: yarn global add netlify-cli
+        env:
+          DATO_API_TOKEN: ${{ secrets.DATO_API_TOKEN }}
       - name: Cypress run
         uses: cypress-io/github-action@v1.24.1
         with:
