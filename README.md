@@ -4,6 +4,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/85967ecb-4414-46be-9521-31f771555953/deploy-status)](https://app.netlify.com/sites/lou-website/deploys)
 
+![](https://github.com/mathiassoeholm/lou-website/workflows/.github/workflows/integrate.yml/badge.svg?branch=feature/cypress)
+
 ## Stack
 
 * Gatsby
