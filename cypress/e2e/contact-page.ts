@@ -27,7 +27,12 @@ describe("contact-page", () => {
 
   it("should show an error message if the request fails", () => {
     cy.server();
-    cy.route(`${Cypress.config().baseUrl}.netlify/funtions/contact-submit`, {});
+    cy.route({
+      method: "POST",
+      url: `${Cypress.config().baseUrl}.netlify/funtions/contact-submit`,
+      status: 500,
+      response: {},
+    });
 
     const fakeEntry = getFakeEntry();
 
