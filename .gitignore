@@ -5,6 +5,7 @@ yarn-error.log
 .netlify
 cypress/videos
 cypress/screenshots
+graphql-types.ts
 
 # Build directory
 /public
