@@ -13,6 +13,7 @@
     "build:app": "gatsby build",
     "dev": "npm-run-all --parallel build:backend:watch netlifydev",
     "develop": "gatsby develop",
+    "prenetlifydev": "which netlify > /dev/null || (echo \"Install the Netlify CLI with: npm install netlify-cli -g\" && exit 1)",
     "netlifydev": "netlify dev",
     "format": "prettier --write src/**/*.{ts,tsx,js,json,md}",
     "storybook": "start-storybook -s ./static -p 6006",
